@@ -1,0 +1,3 @@
+修改udp_tx.v文件 使tx_byte_num由input wired=改为内部reg，初值50
+修改udp_rx.v文件 使rec_byte_num由output reg改为内部reg
+修改udp.v等例化代码
