@@ -21,16 +21,16 @@
 //****************************************************************************************//
 
 module udp_rx(
-    input                clk         ,    //时钟信号
+    (*mark_debug = "true"*)input                clk         ,    //时钟信号
     input                rst_n       ,    //复位信号，低电平有效
     
-    input                gmii_rx_dv  ,    //GMII输入数据有效信号
-    input        [7:0]   gmii_rxd    ,    //GMII输入数据
-    output  reg          rec_pkt_done,    //以太网单包数据接收完成信号
-    output  reg          rec_en      ,    //以太网接收的数据使能信号
-	output  reg  [7 :0]  rec_data    ,
+    (*mark_debug = "true"*)input                gmii_rx_dv  ,    //GMII输入数据有效信号
+    (*mark_debug = "true"*)input        [7:0]   gmii_rxd    ,    //GMII输入数据
+    (*mark_debug = "true"*)output  reg          rec_pkt_done,    //以太网单包数据接收完成信号
+    (*mark_debug = "true"*)output  reg          rec_en      ,    //以太网接收的数据使能信号
+	(*mark_debug = "true"*)output  reg  [7 :0]  rec_data    ,
   
-    output  reg          sustain_flag    //可令FPGA持续发送多包数据    
+    (*mark_debug = "true"*)output  reg          sustain_flag    //可令FPGA持续发送多包数据    
     );
 
 //parameter define
@@ -40,6 +40,7 @@ parameter BOARD_MAC = 48'h00_11_22_33_44_55;
 parameter BOARD_IP = {8'd192,8'd168,8'd1,8'd10};
 //持续发送指令
 parameter sustain_send = 8'haa;
+parameter stop_send    = 8'hbb;
 
 localparam  st_idle     = 7'b000_0001; //初始状态，等待接收前导码
 localparam  st_preamble = 7'b000_0010; //接收前导码状态 
@@ -253,8 +254,10 @@ always @(posedge clk or negedge rst_n) begin
                         rec_pkt_done <= 1'b1; 
                         if(rec_data == sustain_send)   //如果收到持续发送命令
                             sustain_flag <= 1;
-                        else
+                        else if(rec_data == stop_send)
                             sustain_flag <= 0;
+                        else 
+                            sustain_flag <= sustain_flag;
                         rec_byte_num <= data_byte_num;
                     end     
                 end  

@@ -21,20 +21,20 @@
 //****************************************************************************************//
 
 module udp_tx(    
-    (* mark_debug = "true" *)input                clk         , //时钟信号
-    (* mark_debug = "true" *)input                rst_n       , //复位信号，低电平有效
+    input                clk         , //时钟信号
+    input                rst_n       , //复位信号，低电平有效
                                      
-    (* mark_debug = "true" *)input                tx_start_en , //以太网开始发送信号
-	(* mark_debug = "true" *)input        [7:0]   tx_data     , //以太网待发送数据 
+    input                tx_start_en , //以太网开始发送信号
+	input        [7:0]   tx_data     , //以太网待发送数据 
     input        [47:0]  des_mac     , //发送的目标MAC地址
     input        [31:0]  des_ip      , //发送的目标IP地址    
     input        [31:0]  crc_data    , //CRC校验数据
     input        [7:0]   crc_next    , //CRC下次校验完成数据
-    (* mark_debug = "true" *)input                sustain_flag,
-    (* mark_debug = "true" *)output  reg          tx_done     , //以太网发送完成信号
-    (* mark_debug = "true" *)output  reg          tx_req      , //读数据请求信号
-    (* mark_debug = "true" *)output  reg          gmii_tx_en  , //GMII输出数据有效信号
-    (* mark_debug = "true" *)output  reg  [7:0]   gmii_txd    , //GMII输出数据
+    input                sustain_flag,
+    output  reg          tx_done     , //以太网发送完成信号
+    output  reg          tx_req      , //读数据请求信号
+    output  reg          gmii_tx_en  , //GMII输出数据有效信号
+    output  reg  [7:0]   gmii_txd    , //GMII输出数据
     output  reg          crc_en      , //CRC开始校验使能
     output  reg          crc_clr       //CRC数据复位信号 
     );
@@ -108,7 +108,7 @@ always @(posedge clk or negedge rst_n) begin
 		start_en_d2 <= start_en_d1;
     end
 end 
-
+//设置发送的有效数据位数50位
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n) 
         tx_byte_num <= 15'b0;
@@ -143,8 +143,9 @@ always @(posedge clk or negedge rst_n) begin
     else begin        
         if(sustain_flag)
             trig_tx_en <= 1;
-        else 
+        else begin
             trig_tx_en <= pos_start_en;
+        end
     end
 
 end
