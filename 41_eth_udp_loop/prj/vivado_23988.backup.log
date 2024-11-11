@@ -1,0 +1,59 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Nov  9 21:44:08 2024
+# Process ID: 23988
+# Current directory: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj
+# Command line: vivado.exe D:\Project\FPGA\temporary\aa\41_eth_udp_loop\prj\eth_udp_loop.xpr
+# Log file: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/vivado.log
+# Journal file: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/Software/Xilinx/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1139.289 ; gain = 0.000
+update_compile_order -fileset sources_1
+open_run impl_1
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.043 . Memory (MB): peak = 1324.891 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 206 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'u_clk_wiz_0/clk_in1' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.370 . Memory (MB): peak = 2019.316 ; gain = 0.000
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.372 . Memory (MB): peak = 2019.316 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2019.316 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:15 ; elapsed = 00:00:24 . Memory (MB): peak = 2151.973 ; gain = 1012.684
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+CRITICAL WARNING: [Timing 38-469] The REFCLK pin of IDELAYCTRL u_eth_udp_loop/u_gmii_to_rgmii/u_rgmii_rx/IDELAYCTRL_inst has a clock period of 8.000 ns (frequency 125.000 Mhz) but IDELAYE2 u_eth_udp_loop/u_gmii_to_rgmii/u_rgmii_rx/rxdata_bus[0].u_delay_rxd has REFCLK_FREQUENCY of 200.000 Mhz (period 5.000 ns). The IDELAYCTRL REFCLK pin frequency must match the IDELAYE2 REFCLK_FREQUENCY property.
+Resolution: Check that the IDELAYCTRL REFCLK pin is receiving a clock and that the period of the clock matches the REFCLK_FREQUENCY property of the <IDELAYE2/ODELAYE2>.
+CRITICAL WARNING: [Timing 38-469] The REFCLK pin of IDELAYCTRL u_eth_udp_loop/u_gmii_to_rgmii/u_rgmii_rx/IDELAYCTRL_inst has a clock period of 8.000 ns (frequency 125.000 Mhz) but IDELAYE2 u_eth_udp_loop/u_gmii_to_rgmii/u_rgmii_rx/rxdata_bus[2].u_delay_rxd has REFCLK_FREQUENCY of 200.000 Mhz (period 5.000 ns). The IDELAYCTRL REFCLK pin frequency must match the IDELAYE2 REFCLK_FREQUENCY property.
+Resolution: Check that the IDELAYCTRL REFCLK pin is receiving a clock and that the period of the clock matches the REFCLK_FREQUENCY property of the <IDELAYE2/ODELAYE2>.
+CRITICAL WARNING: [Timing 38-469] The REFCLK pin of IDELAYCTRL u_eth_udp_loop/u_gmii_to_rgmii/u_rgmii_rx/IDELAYCTRL_inst has a clock period of 8.000 ns (frequency 125.000 Mhz) but IDELAYE2 u_eth_udp_loop/u_gmii_to_rgmii/u_rgmii_rx/rxdata_bus[1].u_delay_rxd has REFCLK_FREQUENCY of 200.000 Mhz (period 5.000 ns). The IDELAYCTRL REFCLK pin frequency must match the IDELAYE2 REFCLK_FREQUENCY property.
+Resolution: Check that the IDELAYCTRL REFCLK pin is receiving a clock and that the period of the clock matches the REFCLK_FREQUENCY property of the <IDELAYE2/ODELAYE2>.
+CRITICAL WARNING: [Timing 38-469] The REFCLK pin of IDELAYCTRL u_eth_udp_loop/u_gmii_to_rgmii/u_rgmii_rx/IDELAYCTRL_inst has a clock period of 8.000 ns (frequency 125.000 Mhz) but IDELAYE2 u_eth_udp_loop/u_gmii_to_rgmii/u_rgmii_rx/rxdata_bus[3].u_delay_rxd has REFCLK_FREQUENCY of 200.000 Mhz (period 5.000 ns). The IDELAYCTRL REFCLK pin frequency must match the IDELAYE2 REFCLK_FREQUENCY property.
+Resolution: Check that the IDELAYCTRL REFCLK pin is receiving a clock and that the period of the clock matches the REFCLK_FREQUENCY property of the <IDELAYE2/ODELAYE2>.
+CRITICAL WARNING: [Timing 38-469] The REFCLK pin of IDELAYCTRL u_eth_udp_loop/u_gmii_to_rgmii/u_rgmii_rx/IDELAYCTRL_inst has a clock period of 8.000 ns (frequency 125.000 Mhz) but IDELAYE2 u_eth_udp_loop/u_gmii_to_rgmii/u_rgmii_rx/u_delay_rx_ctrl has REFCLK_FREQUENCY of 200.000 Mhz (period 5.000 ns). The IDELAYCTRL REFCLK pin frequency must match the IDELAYE2 REFCLK_FREQUENCY property.
+Resolution: Check that the IDELAYCTRL REFCLK pin is receiving a clock and that the period of the clock matches the REFCLK_FREQUENCY property of the <IDELAYE2/ODELAYE2>.
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Nov  9 21:56:28 2024...

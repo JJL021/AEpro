@@ -21,16 +21,16 @@
 //****************************************************************************************//
 
 module udp_rx(
-    (*mark_debug = "true"*)input                clk         ,    //时钟信号
+    input                clk         ,    //时钟信号
     input                rst_n       ,    //复位信号，低电平有效
     
-    (*mark_debug = "true"*)input                gmii_rx_dv  ,    //GMII输入数据有效信号
-    (*mark_debug = "true"*)input        [7:0]   gmii_rxd    ,    //GMII输入数据
-    (*mark_debug = "true"*)output  reg          rec_pkt_done,    //以太网单包数据接收完成信号
-    (*mark_debug = "true"*)output  reg          rec_en      ,    //以太网接收的数据使能信号
-	(*mark_debug = "true"*)output  reg  [7 :0]  rec_data    ,
+    input                gmii_rx_dv  ,    //GMII输入数据有效信号
+    input        [7:0]   gmii_rxd    ,    //GMII输入数据
+    output  reg          rec_pkt_done,    //以太网单包数据接收完成信号
+    output  reg          rec_en      ,    //以太网接收的数据使能信号
+	output  reg  [7 :0]  rec_data    ,
   
-    (*mark_debug = "true"*)output  reg          sustain_flag    //可令FPGA持续发送多包数据    
+    output  reg          sustain_flag    //可令FPGA持续发送多包数据    
     );
 
 //parameter define

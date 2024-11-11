@@ -1,0 +1,12 @@
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|                  eth_rxc |                  eth_rxc |                                                           u_eth_udp_loop/u_udp/u_udp_tx/gmii_txd_reg[0]/D|
+|                  eth_rxc |                  eth_rxc |                                                           u_eth_udp_loop/u_udp/u_udp_tx/gmii_txd_reg[2]/D|
+|                  eth_rxc |                  eth_rxc |                                                           u_eth_udp_loop/u_udp/u_udp_tx/gmii_txd_reg[1]/D|
+|                  eth_rxc |                  eth_rxc |                                                           u_eth_udp_loop/u_udp/u_udp_tx/gmii_txd_reg[6]/D|
+|                  eth_rxc |                  eth_rxc |                                                           u_eth_udp_loop/u_udp/u_udp_tx/gmii_txd_reg[4]/D|
+|                  eth_rxc |                  eth_rxc |                                                           u_eth_udp_loop/u_udp/u_udp_tx/gmii_txd_reg[5]/D|
+|                  eth_rxc |                  eth_rxc |                                                           u_eth_udp_loop/u_udp/u_udp_tx/gmii_txd_reg[3]/D|
+|                  eth_rxc |                  eth_rxc |                                                           u_eth_udp_loop/u_udp/u_udp_tx/gmii_txd_reg[7]/D|
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+

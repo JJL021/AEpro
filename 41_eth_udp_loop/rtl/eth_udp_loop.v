@@ -21,12 +21,13 @@
 //****************************************************************************************//
 
 module eth_udp_loop(
-    input              sys_clk   , //系统时钟
+    input              clk_200m   , //200Mhz用于IO延时的时钟 
     input              sys_rst_n , //系统复位信号，低电平有效 
     //PL以太网RGMII接口   
     input              eth_rxc   , //RGMII接收数据时钟
     input              eth_rx_ctl, //RGMII输入数据有效信号
     input       [3:0]  eth_rxd   , //RGMII输入数据
+    input       [7:0]  my_eth_send, //AD通道A数据
     output             eth_txc   , //RGMII发送数据时钟    
     output             eth_tx_ctl, //RGMII输出数据有效信号
     output      [3:0]  eth_txd   , //RGMII输出数据          
@@ -45,8 +46,7 @@ parameter  DES_IP    = {8'd192,8'd168,8'd1,8'd102};
 //输入数据IO延时,此处为0,即不延时(如果为n,表示延时n*78ps) 
 parameter IDELAY_VALUE = 0;
 
-//wire define
-wire          clk_200m   		  ; //用于IO延时的时钟 
+//wire define 
 								  
 wire          gmii_rx_clk		  ; //GMII接收时钟
 wire          gmii_rx_dv 		  ; //GMII接收数据有效信号
@@ -95,7 +95,7 @@ wire  [7:0]	  rec_data			  ;
 wire		  rec_en			  ;
 wire		  tx_req			  ;
 wire  [7:0]	  tx_data	    	  ;
-wire  [7:0]   number              ;
+// wire  [7:0]   number              ;
 //*****************************************************
 //**                    main code
 //*****************************************************
@@ -109,15 +109,6 @@ assign des_mac = src_mac;
 assign des_ip = src_ip;
 assign eth_rst_n = sys_rst_n;
 
-//MMCM/PLL
-clk_wiz_0 u_clk_wiz_0
-   (
-   . clk_out2(clk_20m),     //模拟AD工作时钟
-    .clk_out1(clk_200m),     // output clk_out1
-    .reset(~sys_rst_n), 	 // input reset
-    .locked(locked),         // output locked
-    .clk_in1(sys_clk)
-    );  
 
 //GMII接口转RGMII接口
 gmii_to_rgmii 
@@ -286,13 +277,8 @@ eth_ctrl u_eth_ctrl(
 										 
     .gmii_tx_en     	(gmii_tx_en    	 ),
     .gmii_txd       	(gmii_txd      	 ),
-    .number             (number          )
+    .number             (my_eth_send     )
     );
 	
-gen_number u_gen_number(
-
-    .clk_20m     (clk_20m)  ,
-    .sys_rst_n   (sys_rst_n),
-    .number      (number)
-);    
+  
 endmodule

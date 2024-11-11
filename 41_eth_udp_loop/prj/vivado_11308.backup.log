@@ -1,0 +1,422 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Nov  9 15:47:26 2024
+# Process ID: 11308
+# Current directory: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj
+# Command line: vivado.exe D:\Project\FPGA\temporary\aa\41_eth_udp_loop\prj\eth_udp_loop.xpr
+# Log file: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/vivado.log
+# Journal file: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'F:/Software/Xilinx/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1138.664 ; gain = 0.000
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+Command: synth_design -rtl -rtl_skip_mlo -name rtl_1
+Starting synth_design
+Using part: xc7z010clg400-1
+Top: eth_udp_loop
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1553.777 ; gain = 251.672
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'eth_udp_loop' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/eth_udp_loop.v:23]
+	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
+	Parameter BOARD_IP bound to: -1062731510 - type: integer 
+	Parameter DES_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
+	Parameter DES_IP bound to: -1062731418 - type: integer 
+	Parameter IDELAY_VALUE bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/.Xil/Vivado-11308-LEGION2020/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/.Xil/Vivado-11308-LEGION2020/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'gmii_to_rgmii' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/gmii_to_rgmii/gmii_to_rgmii.v:23]
+	Parameter IDELAY_VALUE bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'rgmii_rx' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/gmii_to_rgmii/rgmii_rx.v:23]
+	Parameter IDELAY_VALUE bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'IDELAYE2' [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:35073]
+	Parameter CINVCTRL_SEL bound to: FALSE - type: string 
+	Parameter DELAY_SRC bound to: IDATAIN - type: string 
+	Parameter HIGH_PERFORMANCE_MODE bound to: FALSE - type: string 
+	Parameter IDELAY_TYPE bound to: FIXED - type: string 
+	Parameter IDELAY_VALUE bound to: 0 - type: integer 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_DATAIN_INVERTED bound to: 1'b0 
+	Parameter IS_IDATAIN_INVERTED bound to: 1'b0 
+	Parameter PIPE_SEL bound to: FALSE - type: string 
+	Parameter REFCLK_FREQUENCY bound to: 200.000000 - type: double 
+	Parameter SIGNAL_PATTERN bound to: DATA - type: string 
+	Parameter SIM_DELAY_D bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'IDELAYE2' (2#1) [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:35073]
+INFO: [Synth 8-6157] synthesizing module 'IDDR' [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:34938]
+	Parameter DDR_CLK_EDGE bound to: SAME_EDGE_PIPELINED - type: string 
+	Parameter INIT_Q1 bound to: 1'b0 
+	Parameter INIT_Q2 bound to: 1'b0 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D_INVERTED bound to: 1'b0 
+	Parameter SRTYPE bound to: SYNC - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IDDR' (3#1) [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:34938]
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:1083]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (4#1) [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:1083]
+INFO: [Synth 8-6157] synthesizing module 'BUFIO' [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:1344]
+INFO: [Synth 8-6155] done synthesizing module 'BUFIO' (5#1) [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:1344]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/gmii_to_rgmii/rgmii_rx.v:69]
+INFO: [Synth 8-6157] synthesizing module 'IDELAYCTRL' [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:35060]
+	Parameter SIM_DEVICE bound to: 7SERIES - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IDELAYCTRL' (6#1) [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:35060]
+INFO: [Synth 8-6155] done synthesizing module 'rgmii_rx' (7#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/gmii_to_rgmii/rgmii_rx.v:23]
+INFO: [Synth 8-6157] synthesizing module 'rgmii_tx' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/gmii_to_rgmii/rgmii_tx.v:23]
+INFO: [Synth 8-6157] synthesizing module 'ODDR' [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:49791]
+	Parameter DDR_CLK_EDGE bound to: SAME_EDGE - type: string 
+	Parameter INIT bound to: 1'b0 
+	Parameter IS_C_INVERTED bound to: 1'b0 
+	Parameter IS_D1_INVERTED bound to: 1'b0 
+	Parameter IS_D2_INVERTED bound to: 1'b0 
+	Parameter SRTYPE bound to: SYNC - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'ODDR' (8#1) [F:/Software/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:49791]
+INFO: [Synth 8-6155] done synthesizing module 'rgmii_tx' (9#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/gmii_to_rgmii/rgmii_tx.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'gmii_to_rgmii' (10#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/gmii_to_rgmii/gmii_to_rgmii.v:23]
+INFO: [Synth 8-6157] synthesizing module 'arp' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/arp/arp.v:23]
+	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
+	Parameter BOARD_IP bound to: -1062731510 - type: integer 
+	Parameter DES_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
+	Parameter DES_IP bound to: -1062731418 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'arp_rx' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/arp/arp_rx.v:23]
+	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
+	Parameter BOARD_IP bound to: -1062731510 - type: integer 
+	Parameter st_idle bound to: 5'b00001 
+	Parameter st_preamble bound to: 5'b00010 
+	Parameter st_eth_head bound to: 5'b00100 
+	Parameter st_arp_data bound to: 5'b01000 
+	Parameter st_rx_end bound to: 5'b10000 
+	Parameter ETH_TPYE bound to: 16'b0000100000000110 
+INFO: [Synth 8-6155] done synthesizing module 'arp_rx' (11#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/arp/arp_rx.v:23]
+INFO: [Synth 8-6157] synthesizing module 'arp_tx' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/arp/arp_tx.v:23]
+	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
+	Parameter BOARD_IP bound to: -1062731510 - type: integer 
+	Parameter DES_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
+	Parameter DES_IP bound to: -1062731418 - type: integer 
+	Parameter st_idle bound to: 5'b00001 
+	Parameter st_preamble bound to: 5'b00010 
+	Parameter st_eth_head bound to: 5'b00100 
+	Parameter st_arp_data bound to: 5'b01000 
+	Parameter st_crc bound to: 5'b10000 
+	Parameter ETH_TYPE bound to: 16'b0000100000000110 
+	Parameter HD_TYPE bound to: 16'b0000000000000001 
+	Parameter PROTOCOL_TYPE bound to: 16'b0000100000000000 
+	Parameter MIN_DATA_NUM bound to: 16'b0000000000101110 
+INFO: [Synth 8-6155] done synthesizing module 'arp_tx' (12#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/arp/arp_tx.v:23]
+INFO: [Synth 8-6157] synthesizing module 'crc32_d8' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/arp/crc32_d8.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'crc32_d8' (13#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/arp/crc32_d8.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'arp' (14#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/arp/arp.v:23]
+INFO: [Synth 8-6157] synthesizing module 'icmp' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/icmp/icmp.v:23]
+	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
+	Parameter BOARD_IP bound to: -1062731510 - type: integer 
+	Parameter DES_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
+	Parameter DES_IP bound to: -1062731418 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'icmp_rx' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/icmp/icmp_rx.v:23]
+	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
+	Parameter BOARD_IP bound to: -1062731510 - type: integer 
+	Parameter st_idle bound to: 7'b0000001 
+	Parameter st_preamble bound to: 7'b0000010 
+	Parameter st_eth_head bound to: 7'b0000100 
+	Parameter st_ip_head bound to: 7'b0001000 
+	Parameter st_icmp_head bound to: 7'b0010000 
+	Parameter st_rx_data bound to: 7'b0100000 
+	Parameter st_rx_end bound to: 7'b1000000 
+	Parameter ETH_TYPE bound to: 16'b0000100000000000 
+	Parameter ICMP_TYPE bound to: 8'b00000001 
+	Parameter ECHO_REQUEST bound to: 8'b00001000 
+INFO: [Synth 8-6155] done synthesizing module 'icmp_rx' (15#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/icmp/icmp_rx.v:23]
+INFO: [Synth 8-6157] synthesizing module 'icmp_tx' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/icmp/icmp_tx.v:23]
+	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
+	Parameter BOARD_IP bound to: -1062731510 - type: integer 
+	Parameter DES_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
+	Parameter DES_IP bound to: -1062731418 - type: integer 
+	Parameter st_idle bound to: 8'b00000001 
+	Parameter st_check_sum bound to: 8'b00000010 
+	Parameter st_check_icmp bound to: 8'b00000100 
+	Parameter st_preamble bound to: 8'b00001000 
+	Parameter st_eth_head bound to: 8'b00010000 
+	Parameter st_ip_head bound to: 8'b00100000 
+	Parameter st_tx_data bound to: 8'b01000000 
+	Parameter st_crc bound to: 8'b10000000 
+	Parameter ETH_TYPE bound to: 16'b0000100000000000 
+	Parameter MIN_DATA_NUM bound to: 16'b0000000000010010 
+	Parameter ECHO_REPLY bound to: 8'b00000000 
+INFO: [Synth 8-6155] done synthesizing module 'icmp_tx' (16#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/icmp/icmp_tx.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'icmp' (17#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/icmp/icmp.v:23]
+INFO: [Synth 8-6157] synthesizing module 'udp' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/udp/udp.v:23]
+	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
+	Parameter BOARD_IP bound to: -1062731510 - type: integer 
+	Parameter DES_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
+	Parameter DES_IP bound to: -1062731418 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'udp_rx' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/udp/udp_rx.v:23]
+	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
+	Parameter BOARD_IP bound to: -1062731510 - type: integer 
+	Parameter sustain_send bound to: 8'b10101010 
+	Parameter stop_send bound to: 8'b10111011 
+	Parameter st_idle bound to: 7'b0000001 
+	Parameter st_preamble bound to: 7'b0000010 
+	Parameter st_eth_head bound to: 7'b0000100 
+	Parameter st_ip_head bound to: 7'b0001000 
+	Parameter st_udp_head bound to: 7'b0010000 
+	Parameter st_rx_data bound to: 7'b0100000 
+	Parameter st_rx_end bound to: 7'b1000000 
+	Parameter ETH_TYPE bound to: 16'b0000100000000000 
+	Parameter UDP_TYPE bound to: 8'b00010001 
+INFO: [Synth 8-6155] done synthesizing module 'udp_rx' (18#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/udp/udp_rx.v:23]
+INFO: [Synth 8-6157] synthesizing module 'udp_tx' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/udp/udp_tx.v:23]
+	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
+	Parameter BOARD_IP bound to: -1062731510 - type: integer 
+	Parameter DES_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
+	Parameter DES_IP bound to: -1062731418 - type: integer 
+	Parameter st_idle bound to: 7'b0000001 
+	Parameter st_check_sum bound to: 7'b0000010 
+	Parameter st_preamble bound to: 7'b0000100 
+	Parameter st_eth_head bound to: 7'b0001000 
+	Parameter st_ip_head bound to: 7'b0010000 
+	Parameter st_tx_data bound to: 7'b0100000 
+	Parameter st_crc bound to: 7'b1000000 
+	Parameter ETH_TYPE bound to: 16'b0000100000000000 
+	Parameter MIN_DATA_NUM bound to: 16'b0000000000010010 
+INFO: [Synth 8-6155] done synthesizing module 'udp_tx' (19#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/udp/udp_tx.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'udp' (20#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/udp/udp.v:23]
+INFO: [Synth 8-6157] synthesizing module 'async_fifo_2048x8b' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/.Xil/Vivado-11308-LEGION2020/realtime/async_fifo_2048x8b_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'async_fifo_2048x8b' (21#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/.Xil/Vivado-11308-LEGION2020/realtime/async_fifo_2048x8b_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'eth_ctrl' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/eth_ctrl.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'eth_ctrl' (22#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/eth_ctrl.v:23]
+INFO: [Synth 8-6157] synthesizing module 'gen_number' [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/gen_number.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'gen_number' (23#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/gen_number.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'eth_udp_loop' (24#1) [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/eth_udp_loop.v:23]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1657.426 ; gain = 355.320
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 1657.426 ; gain = 355.320
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 1657.426 ; gain = 355.320
+---------------------------------------------------------------------------------
+INFO: [Project 1-454] Reading design checkpoint 'd:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.dcp' for cell 'u_clk_wiz_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.dcp' for cell 'u_async_fifo_2048x8b'
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.088 . Memory (MB): peak = 1657.426 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 25 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.xdc] for cell 'u_async_fifo_2048x8b/U0'
+Finished Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.xdc] for cell 'u_async_fifo_2048x8b/U0'
+Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'u_clk_wiz_0/inst'
+Finished Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'u_clk_wiz_0/inst'
+Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'u_clk_wiz_0/inst'
+Finished Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'u_clk_wiz_0/inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/eth_udp_loop_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/eth_udp_loop_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Timing 38-2] Deriving generated clocks
+Parsing XDC File [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc]
+WARNING: [Constraints 18-619] A clock with name 'sys_clk' already exists, overwriting the previous clock with the same name. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:17]
+Finished Parsing XDC File [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/eth_udp_loop_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/eth_udp_loop_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b_clocks.xdc] for cell 'u_async_fifo_2048x8b/U0'
+Finished Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b_clocks.xdc] for cell 'u_async_fifo_2048x8b/U0'
+INFO: [Vivado 12-3272] Current instance is the top level cell 'u_async_fifo_2048x8b/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst' of design 'rtl_1' [F:/Software/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: u_async_fifo_2048x8b/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [F:/Software/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+INFO: [Vivado 12-3272] Current instance is the top level cell 'u_async_fifo_2048x8b/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst' of design 'rtl_1' [F:/Software/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: u_async_fifo_2048x8b/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [F:/Software/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [F:/Software/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/eth_udp_loop_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/eth_udp_loop_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [F:/Software/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/eth_udp_loop_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/eth_udp_loop_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-1715] 3 XPM XDC files have been applied to the design.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1779.965 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 1912.645 ; gain = 610.539
+64 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:14 ; elapsed = 00:00:22 . Memory (MB): peak = 1912.645 ; gain = 773.980
+add_files -norecurse {D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/AD9269.v D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/AD_convert.v D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/TOP.v D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/AD9269_SPI.v}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 12
+INFO: [Vivado 12-4149] The synthesis checkpoint for IP 'D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.xci' is already up-to-date
+[Sat Nov  9 16:10:18 2024] Launched synth_1...
+Run output will be captured here: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 12
+INFO: [Vivado 12-4149] The synthesis checkpoint for IP 'D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.xci' is already up-to-date
+[Sat Nov  9 16:16:46 2024] Launched synth_1...
+Run output will be captured here: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/runme.log
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7z010clg400-1
+INFO: [Project 1-454] Reading design checkpoint 'd:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.dcp' for cell 'u_clk_wiz_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.dcp' for cell 'u_eth_udp_loop/u_async_fifo_2048x8b'
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 2002.914 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 206 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Opt 31-35] Removing redundant IBUF, u_clk_wiz_0/inst/clkin1_ibufg, from the path connected to top-level port: sys_clk 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'u_clk_wiz_0/clk_in1' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.xdc] for cell 'u_eth_udp_loop/u_async_fifo_2048x8b/U0'
+Finished Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.xdc] for cell 'u_eth_udp_loop/u_async_fifo_2048x8b/U0'
+Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'u_clk_wiz_0/inst'
+Finished Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc] for cell 'u_clk_wiz_0/inst'
+Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'u_clk_wiz_0/inst'
+INFO: [Timing 38-35] Done setting XDC timing constraints. [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc:57]
+INFO: [Timing 38-2] Deriving generated clocks [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc:57]
+Finished Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc] for cell 'u_clk_wiz_0/inst'
+Parsing XDC File [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc]
+WARNING: [Vivado 12-507] No nets matched 'u_gmii_to_rgmii/u_rgmii_rx/eth_rxc'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:37]
+CRITICAL WARNING: [Common 17-162] Invalid option value specified for '-nets'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:37]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/rec_data[0]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:40]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/rec_data[1]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:40]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/rec_data[2]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:40]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/rec_data[3]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:40]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/rec_data[4]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:40]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/rec_data[5]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:40]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/rec_data[6]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:40]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/rec_data[7]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:40]
+CRITICAL WARNING: [Common 17-162] Invalid option value specified for '-nets'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:40]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/gmii_rxd[0]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:44]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/gmii_rxd[1]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:44]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/gmii_rxd[2]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:44]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/gmii_rxd[3]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:44]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/gmii_rxd[4]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:44]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/gmii_rxd[5]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:44]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/gmii_rxd[6]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:44]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/gmii_rxd[7]'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:44]
+CRITICAL WARNING: [Common 17-162] Invalid option value specified for '-nets'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:44]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/gmii_rx_dv'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:48]
+CRITICAL WARNING: [Common 17-162] Invalid option value specified for '-nets'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:48]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/rec_en'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:52]
+CRITICAL WARNING: [Common 17-162] Invalid option value specified for '-nets'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:52]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/rec_pkt_done'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:56]
+CRITICAL WARNING: [Common 17-162] Invalid option value specified for '-nets'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:56]
+WARNING: [Vivado 12-507] No nets matched 'u_udp/u_udp_rx/sustain_flag'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:60]
+CRITICAL WARNING: [Common 17-162] Invalid option value specified for '-nets'. [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc:60]
+Finished Parsing XDC File [D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc]
+Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b_clocks.xdc] for cell 'u_eth_udp_loop/u_async_fifo_2048x8b/U0'
+Finished Parsing XDC File [d:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b_clocks.xdc] for cell 'u_eth_udp_loop/u_async_fifo_2048x8b/U0'
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: u_eth_udp_loop/u_async_fifo_2048x8b/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/rd_pntr_cdc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [F:/Software/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: u_eth_udp_loop/u_async_fifo_2048x8b/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/wr_pntr_cdc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [F:/Software/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+INFO: [Project 1-1715] 3 XPM XDC files have been applied to the design.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2604.688 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2604.688 ; gain = 624.340
+place_ports {DB15_0[0]} V16
+place_ports {DB15_0[1]} W16
+place_ports {DB15_0[2]} T14
+place_ports {DB15_0[3]} T15
+place_ports {DB15_0[4]} Y17
+place_ports {DB15_0[5]} Y16
+place_ports {DB15_0[6]} T16
+place_ports {DB15_0[7]} U17
+place_ports {DB15_0[8]} R17
+place_ports {DB15_0[9]} R16
+place_ports {DB15_0[10]} W19
+place_ports {DB15_0[11]} W18
+place_ports {DB15_0[12]} P16
+place_ports {DB15_0[13]} P15
+place_ports {DB15_0[14]} Y19
+place_ports {DB15_0[15]} Y18
+set_property IOSTANDARD LVCMOS33 [get_ports [list {DB15_0[15]} {DB15_0[14]} {DB15_0[13]} {DB15_0[12]} {DB15_0[11]} {DB15_0[10]} {DB15_0[9]} {DB15_0[8]} {DB15_0[7]} {DB15_0[6]} {DB15_0[5]} {DB15_0[4]} {DB15_0[3]} {DB15_0[2]} {DB15_0[1]} {DB15_0[0]}]]
+place_ports CSB J14
+place_ports DCO L16
+place_ports OEB V18
+place_ports OTR V17
+place_ports PDWM M15
+place_ports SCLK R18
+place_ports SDIO K14
+save_constraints
+launch_runs impl_1 -jobs 12
+INFO: [Vivado 12-4149] The synthesis checkpoint for IP 'D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.xci' is already up-to-date
+ERROR: [Chipscope 16-213] The debug port 'u_ila_0/clk' has 1 unconnected channels (bits). This will cause errors during implementation.
+set_property IOSTANDARD LVCMOS33 [get_ports [list CSB]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list DCO]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list OEB]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list OTR]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list SCLK]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list PDWM]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list SDIO]]
+save_constraints
+launch_runs impl_1 -jobs 12
+INFO: [Vivado 12-4149] The synthesis checkpoint for IP 'D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.xci' is already up-to-date
+ERROR: [Chipscope 16-213] The debug port 'u_ila_0/clk' has 1 unconnected channels (bits). This will cause errors during implementation.
+reset_run synth_1
+launch_runs impl_1 -jobs 12
+INFO: [Vivado 12-4149] The synthesis checkpoint for IP 'D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.srcs/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.xci' is already up-to-date
+WARNING: [Project 1-478] Design 'synth_1' is stale and will not be used when launching 'impl_1'
+[Sat Nov  9 16:33:01 2024] Launched synth_1...
+Run output will be captured here: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/runme.log
+[Sat Nov  9 16:33:01 2024] Launched impl_1...
+Run output will be captured here: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.runs/impl_1/runme.log
+close_design
+open_run impl_1
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.040 . Memory (MB): peak = 2647.488 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 206 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'u_clk_wiz_0/clk_in1' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.397 . Memory (MB): peak = 2739.477 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.397 . Memory (MB): peak = 2739.477 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2739.477 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Nov  9 20:43:27 2024...

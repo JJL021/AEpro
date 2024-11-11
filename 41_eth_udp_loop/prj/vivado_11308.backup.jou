@@ -1,0 +1,67 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Nov  9 15:47:26 2024
+# Process ID: 11308
+# Current directory: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj
+# Command line: vivado.exe D:\Project\FPGA\temporary\aa\41_eth_udp_loop\prj\eth_udp_loop.xpr
+# Log file: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/vivado.log
+# Journal file: D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Project/FPGA/temporary/aa/41_eth_udp_loop/prj/eth_udp_loop.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+add_files -norecurse {D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/AD9269.v D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/AD_convert.v D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/TOP.v D:/Project/FPGA/temporary/aa/41_eth_udp_loop/rtl/AD9269_SPI.v}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 12
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 12
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+place_ports {DB15_0[0]} V16
+place_ports {DB15_0[1]} W16
+place_ports {DB15_0[2]} T14
+place_ports {DB15_0[3]} T15
+place_ports {DB15_0[4]} Y17
+place_ports {DB15_0[5]} Y16
+place_ports {DB15_0[6]} T16
+place_ports {DB15_0[7]} U17
+place_ports {DB15_0[8]} R17
+place_ports {DB15_0[9]} R16
+place_ports {DB15_0[10]} W19
+place_ports {DB15_0[11]} W18
+place_ports {DB15_0[12]} P16
+place_ports {DB15_0[13]} P15
+place_ports {DB15_0[14]} Y19
+place_ports {DB15_0[15]} Y18
+set_property IOSTANDARD LVCMOS33 [get_ports [list {DB15_0[15]} {DB15_0[14]} {DB15_0[13]} {DB15_0[12]} {DB15_0[11]} {DB15_0[10]} {DB15_0[9]} {DB15_0[8]} {DB15_0[7]} {DB15_0[6]} {DB15_0[5]} {DB15_0[4]} {DB15_0[3]} {DB15_0[2]} {DB15_0[1]} {DB15_0[0]}]]
+place_ports CSB J14
+place_ports DCO L16
+place_ports OEB V18
+place_ports OTR V17
+place_ports PDWM M15
+place_ports SCLK R18
+place_ports SDIO K14
+save_constraints
+launch_runs impl_1 -jobs 12
+set_property IOSTANDARD LVCMOS33 [get_ports [list CSB]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list DCO]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list OEB]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list OTR]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list SCLK]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list PDWM]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list SDIO]]
+save_constraints
+launch_runs impl_1 -jobs 12
+reset_run synth_1
+launch_runs impl_1 -jobs 12
+wait_on_run impl_1
+close_design
+open_run impl_1
