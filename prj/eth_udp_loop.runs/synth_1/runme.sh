@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log eth_udp_loop.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source eth_udp_loop.tcl
+EAStep vivado -log TOP.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source TOP.tcl

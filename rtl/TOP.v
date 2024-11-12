@@ -1,5 +1,6 @@
+//log
 //第四次：增加了TOP模块
-
+//第五次：TOP无问题（DB15_0为内部引脚）
 
 module TOP(
 input              sys_clk   ,      //系统时钟
@@ -16,7 +17,7 @@ output             eth_rst_n ,      //以太网芯片复位信号，低电平有效
 //AD接口
 input  wire         OTR     ,       // 通道A超出范围信号
 input  wire         DCO     ,       // A通道数字时钟输出
-input  wire [15:0]  DB15_0  ,       // 通道A的数据
+//input  wire [15:0]  DB15_0  ,       // 通道A的数据
 output wire         OEB     ,       //输出使能 低有效
 output wire         PDWM    ,
 output wire         SCLK    ,
@@ -26,11 +27,11 @@ output wire         AD_CLK
 );
 
 
-//AD
-
+//wire
 wire [15:0]  DATA_A;
 wire [15:0]  DATA_B;
-
+wire [7:0]   my_send;
+wire        clk_200m;
 
 //例化
 
@@ -56,7 +57,8 @@ eth_udp_loop u_eth_udp_loop(
     .eth_txc        (eth_txc   ), 
     .eth_tx_ctl     (eth_tx_ctl), 
     .eth_txd        (eth_txd   ), 
-    .eth_rst_n      (eth_rst_n ) 
+    .eth_rst_n      (eth_rst_n ),
+    .my_send        (my_send   )
 );
 
 AD_convert u_ad_convert(

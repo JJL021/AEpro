@@ -2,11 +2,11 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Tue Nov 12 13:28:56 2024
-# Process ID: 21708
+# Start of session at: Tue Nov 12 14:28:31 2024
+# Process ID: 25860
 # Current directory: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1
-# Command line: vivado.exe -log eth_udp_loop.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source eth_udp_loop.tcl
-# Log file: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/eth_udp_loop.vds
+# Command line: vivado.exe -log TOP.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TOP.tcl
+# Log file: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/TOP.vds
 # Journal file: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
-source eth_udp_loop.tcl -notrace
+source TOP.tcl -notrace
