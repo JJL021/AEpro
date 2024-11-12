@@ -1312,3 +1312,11 @@ dismissDialog("Program Device"); // bC
 // Tcl Message: INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
 // 'I' command handler elapsed time: 3 seconds
 dismissDialog("Program Device"); // bz
+// Elapsed time: 217 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager]", 0, true); // u - Node
+// Run Command: PAResourceCommand.PACommandNames_GOTO_PROJECT_MANAGER
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 11); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, eth_udp_loop.xdc]", 13, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, eth_udp_loop.xdc]", 13, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, eth_udp_loop.xdc]", 13, false, false, false, false, false, true); // D - Double Click
+// Launch External Editor: 'D:/SoftWare/Microsoft VS Code/Code.exe "D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc"'

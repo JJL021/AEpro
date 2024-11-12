@@ -24,7 +24,7 @@ always @(posedge AD_CLK or negedge SYS_RST) begin
   if(!SYS_RST)
     DB15_0 <= 16'b0;
   else
-    DB15_0 <= 16'b0;
+    DB15_0 <= 16'h3456;
 end
 
 

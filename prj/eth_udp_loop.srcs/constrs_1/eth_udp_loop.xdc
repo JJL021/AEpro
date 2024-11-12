@@ -67,3 +67,6 @@ set_property IOSTANDARD LVCMOS33 [get_ports OTR]
 set_property IOSTANDARD LVCMOS33 [get_ports PDWM]
 set_property IOSTANDARD LVCMOS33 [get_ports SCLK]
 set_property IOSTANDARD LVCMOS33 [get_ports SDIO]
+
+set_property PACKAGE_PIN N20 [get_ports AD_CLK]
+set_property IOSTANDARD LVCMOS33 [get_ports AD_CLK]

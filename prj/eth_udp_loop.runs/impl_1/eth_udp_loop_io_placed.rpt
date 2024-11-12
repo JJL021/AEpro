@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date                      : Tue Nov 12 10:16:26 2024
+| Date                      : Tue Nov 12 11:45:13 2024
 | Host                      : LEGION2020 running 64-bit major release  (build 9200)
 | Command                   : report_io -file eth_udp_loop_io_placed.rpt
 | Design                    : eth_udp_loop
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|            38 |
+|            39 |
 +---------------+
 
 
@@ -294,7 +294,7 @@ Table of Contents
 | N17        |             | High Range | IO_L23P_T3_34           | User IO       |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | N18        |             | High Range | IO_L13P_T2_MRCC_34      | User IO       |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | N19        |             | High Range | VCCO_34                 | VCCO          |             |      34 |            |      |                     |                      |    3.30 |            |           |          |      |                  |              |                   |              |
-| N20        |             | High Range | IO_L14P_T2_SRCC_34      | User IO       |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
+| N20        | AD_CLK      | High Range | IO_L14P_T2_SRCC_34      | OUTPUT        | LVCMOS33    |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | P1         |             |            | PS_DDR_DQ16_502         | PSS IO        |             |         |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | P2         |             |            | VCCO_DDR_502            | VCCO          |             |         |            |      |                     |                      |   any** |            |           |          |      |                  |              |                   |              |
 | P3         |             |            | PS_DDR_DQ17_502         | PSS IO        |             |         |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |

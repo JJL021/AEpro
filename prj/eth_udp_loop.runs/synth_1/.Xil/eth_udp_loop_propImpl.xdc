@@ -75,3 +75,5 @@ set_property src_info {type:XDC file:1 line:63 export:INPUT save:INPUT read:READ
 set_property PACKAGE_PIN R18 [get_ports SCLK]
 set_property src_info {type:XDC file:1 line:64 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN K14 [get_ports SDIO]
+set_property src_info {type:XDC file:1 line:71 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN N20 [get_ports AD_CLK]

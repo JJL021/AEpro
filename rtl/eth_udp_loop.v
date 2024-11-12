@@ -16,7 +16,7 @@
 // Created date:        2020/2/18 9:20:14
 // Version:             V1.0
 // Descriptions:        The original version
-//
+//增加了ad_clk的输出引脚
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
 
@@ -40,7 +40,8 @@ module eth_udp_loop(
     output wire         PDWM    ,
     output wire         SCLK    ,
     output wire         CSB     , //spi_cs
-    output wire         SDIO    
+    output wire         SDIO    ,
+    output wire         AD_CLK 
 
  
 
@@ -112,7 +113,7 @@ wire  [7:0]   my_send             ;
 
 
 //AD
-wire         AD_CLK ;
+
 wire [15:0]  DATA_A  ;
 wire [15:0]  DATA_B;
 //*****************************************************

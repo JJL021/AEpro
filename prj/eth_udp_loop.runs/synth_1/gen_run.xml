@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1731377659">
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1731382975">
   <File Type="PA-TCL" Name="eth_udp_loop.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="eth_udp_loop_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="eth_udp_loop_reports.tcl"/>
