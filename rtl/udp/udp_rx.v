@@ -16,7 +16,8 @@
 // Created date:        2020/2/18 9:20:14
 // Version:             V1.0
 // Descriptions:        The original version
-//
+//二次开发：
+//rec_byte_num由output改为内部变量
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
 
@@ -28,8 +29,10 @@ module udp_rx(
     input        [7:0]   gmii_rxd    ,    //GMII输入数据
     output  reg          rec_pkt_done,    //以太网单包数据接收完成信号
     output  reg          rec_en      ,    //以太网接收的数据使能信号
-	output  reg  [7 :0]  rec_data    ,
-    output  reg  [15:0]  rec_byte_num     //以太网接收的有效字数 单位:byte     
+	output  reg  [7 :0]  rec_data    ,  
+    
+    //自定义
+    output  reg          sustain_flag    //可令FPGA持续发送多包数据
     );
 
 //parameter define
@@ -49,6 +52,9 @@ localparam  st_rx_end   = 7'b100_0000; //接收结束
 localparam  ETH_TYPE    = 16'h0800   ; //以太网协议类型 IP协议
 localparam  UDP_TYPE    = 8'd17      ; //UDP协议类型
 
+localparam  sustain_send_cmd = 8'haa;
+localparam  stop_send_cmd    = 8'hbb;
+
 //reg define
 reg  [6:0]   cur_state       ;
 reg  [6:0]   next_state      ;
@@ -63,6 +69,7 @@ reg  [5:0]   ip_head_byte_num; //IP首部长度
 reg  [15:0]  udp_byte_num    ; //UDP长度
 reg  [15:0]  data_byte_num   ; //数据长度
 reg  [15:0]  data_cnt        ; //有效数据计数    
+reg  [15:0]  rec_byte_num    ;//以太网接收的有效字数 单位:byte 
 
 //*****************************************************
 //**                    main code
@@ -149,10 +156,11 @@ always @(posedge clk or negedge rst_n) begin
         rec_data <= 32'd0;
         rec_pkt_done <= 1'b0;
         rec_byte_num <= 16'd0;
+        sustain_flag <= 1'b0;
     end
     else begin
         skip_en <= 1'b0;
-        error_en <= 1'b0;  
+        error_en <= 1'b0; 
         rec_pkt_done <= 1'b0;
         case(next_state)
             st_idle : begin
@@ -241,12 +249,18 @@ always @(posedge clk or negedge rst_n) begin
                 //接收数据          
                 if(gmii_rx_dv) begin
                     data_cnt <= data_cnt + 16'd1;
-					rec_data <= gmii_rxd;
+					rec_data <= gmii_rxd;                //进入fifo缓冲
 					rec_en <= 1'b1; 
                     if(data_cnt == data_byte_num - 16'd1) begin
                         skip_en <= 1'b1;                    //有效数据接收完成
                         data_cnt <= 16'd0;
-                        rec_pkt_done <= 1'b1;               
+                        rec_pkt_done <= 1'b1;   
+                        if(rec_data == sustain_send_cmd)   //如果收到持续发送命令
+                            sustain_flag <= 1;
+                        else if(rec_data == stop_send_cmd) //如果收到停止发送命令
+                            sustain_flag <= 0;
+                        else 
+                            sustain_flag <= sustain_flag;            
                         rec_byte_num <= data_byte_num;
                     end     
                 end  

@@ -17,6 +17,7 @@
 // Version:             V1.0
 // Descriptions:        The original version
 //第三次提交:增加了ad_clk的输出引脚
+//删除了assign tx_byte_num = rec_byte_num; rec_byte_num与tx_byte_num的接口
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
 
@@ -109,7 +110,6 @@ assign icmp_tx_start_en = icmp_rec_pkt_done;
 assign icmp_tx_byte_num = icmp_rec_byte_num;
 
 assign tx_start_en = rec_pkt_done;
-assign tx_byte_num = rec_byte_num;
 assign des_mac = src_mac;
 assign des_ip = src_ip;
 assign eth_rst_n = sys_rst_n;
@@ -188,11 +188,11 @@ icmp
 
     .rec_pkt_done  (icmp_rec_pkt_done),    
     .rec_en        (icmp_rec_en      ), 		  
-    .rec_data      (icmp_rec_data    ),   	    
-    .rec_byte_num  (icmp_rec_byte_num),      
+    .rec_data      (icmp_rec_data    ), 
+    .rec_byte_num  (icmp_rec_byte_num),     
     .tx_start_en   (icmp_tx_start_en ),        
-    .tx_data       (icmp_tx_data     ),       
-    .tx_byte_num   (icmp_tx_byte_num ),  
+    .tx_data       (icmp_tx_data     ), 
+    .tx_byte_num   (icmp_tx_byte_num ),    
     .des_mac       (des_mac     	 ),
     .des_ip        (des_ip      	 ),    
     .tx_done       (icmp_tx_done	 ),        
@@ -220,10 +220,10 @@ udp
     .rec_pkt_done  (rec_pkt_done),    
     .rec_en        (udp_rec_en  ),     
     .rec_data      (udp_rec_data),         
-    .rec_byte_num  (rec_byte_num),      
+   // .rec_byte_num  (rec_byte_num),      
     .tx_start_en   (tx_start_en ),        
     .tx_data       (udp_tx_data ),         
-    .tx_byte_num   (tx_byte_num ),  
+   // .tx_byte_num   (tx_byte_num ),  
     .des_mac       (des_mac     ),
     .des_ip        (des_ip      ),    
     .tx_done       (udp_tx_done ),        

@@ -16,7 +16,8 @@
 // Created date:        2020/2/18 9:20:14
 // Version:             V1.0
 // Descriptions:        The original version
-//
+//二次开发:
+//将tx_data_num由input改为内部，将发送数据部分的判断改大
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
 
@@ -26,7 +27,6 @@ module udp_tx(
     
     input                tx_start_en, //以太网开始发送信号
 	input        [ 7:0]  tx_data    , //以太网待发送数据 
-    input        [15:0]  tx_byte_num, //以太网发送的有效字节数
     input        [47:0]  des_mac    , //发送的目标MAC地址
     input        [31:0]  des_ip     , //发送的目标IP地址    
     input        [31:0]  crc_data   , //CRC校验数据
@@ -36,7 +36,9 @@ module udp_tx(
     output  reg          gmii_tx_en , //GMII输出数据有效信号
     output  reg  [7:0]   gmii_txd   , //GMII输出数据
     output  reg          crc_en     , //CRC开始校验使能
-    output  reg          crc_clr      //CRC数据复位信号 
+    output  reg          crc_clr    , //CRC数据复位信号 
+    //自定义
+    input                sustain_flag
     );
 
 //parameter define
@@ -82,6 +84,7 @@ reg  [1:0]   tx_bit_sel     ;
 reg  [15:0]  data_cnt       ; //发送数据个数计数器
 reg          tx_done_t      ;
 reg  [4:0]   real_add_cnt   ; //以太网数据实际多发的字节数
+reg  [15:0]  tx_byte_num    ; //自定义 以太网发送的有效字节数
                                     
 //wire define                       
 wire         pos_start_en    ;//开始发送数据上升沿
@@ -107,6 +110,14 @@ always @(posedge clk or negedge rst_n) begin
 		start_en_d2 <= start_en_d1;
     end
 end 
+//自定义
+//设置发送的有效数据位数50位
+always @(posedge clk or negedge rst_n) begin
+    if(!rst_n) 
+        tx_byte_num <= 15'b0;
+    else
+        tx_byte_num <= 50;
+end
 
 //寄存数据有效字节
 always @(posedge clk or negedge rst_n) begin
@@ -132,8 +143,13 @@ end
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n) 
         trig_tx_en <= 1'b0;
-    else
-        trig_tx_en <= pos_start_en;
+    else begin        
+        if(sustain_flag)
+            trig_tx_en <= 1;
+        else begin
+            trig_tx_en <= pos_start_en;
+        end
+    end
 
 end
 
@@ -367,7 +383,7 @@ always @(posedge clk or negedge rst_n) begin
                 end
 				else ;
 				
-				if(data_cnt == tx_data_num - 16'd2)
+				if(data_cnt + real_add_cnt == real_tx_data_num - 16'd2)
 					tx_req <= 1'b0; 
 				else ;
 				

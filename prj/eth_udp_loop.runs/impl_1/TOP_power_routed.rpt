@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Tue Nov 12 14:31:10 2024
+| Date             : Tue Nov 12 15:33:26 2024
 | Host             : LEGION2020 running 64-bit major release  (build 9200)
 | Command          : report_power -file TOP_power_routed.rpt -pb TOP_power_summary_routed.pb -rpx TOP_power_routed.rpx
 | Design           : TOP
@@ -53,14 +53,14 @@ Table of Contents
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |     0.008 |        8 |       --- |             --- |
-| Slice Logic             |     0.002 |     4431 |       --- |             --- |
-|   LUT as Logic          |     0.002 |     2008 |     17600 |           11.41 |
-|   CARRY4                |    <0.001 |      209 |      4400 |            4.75 |
-|   Register              |    <0.001 |     1786 |     35200 |            5.07 |
+| Slice Logic             |     0.002 |     4268 |       --- |             --- |
+|   LUT as Logic          |     0.002 |     1936 |     17600 |           11.00 |
+|   CARRY4                |    <0.001 |      189 |      4400 |            4.30 |
+|   Register              |    <0.001 |     1710 |     35200 |            4.86 |
 |   BUFG                  |    <0.001 |        2 |        32 |            6.25 |
 |   Others                |     0.000 |       56 |       --- |             --- |
 |   LUT as Shift Register |     0.000 |        2 |      6000 |            0.03 |
-| Signals                 |     0.002 |     3597 |       --- |             --- |
+| Signals                 |     0.002 |     3452 |       --- |             --- |
 | Block RAM               |     0.002 |      0.5 |        60 |            0.83 |
 | MMCM                    |     0.106 |        1 |         2 |           50.00 |
 | I/O                     |     0.023 |       22 |       100 |           22.00 |

@@ -16,7 +16,8 @@
 // Created date:        2020/2/18 9:20:14
 // Version:             V1.0
 // Descriptions:        The original version
-//
+//二次开发：
+//删除了rec_num于tx_num的接口
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
 
@@ -60,7 +61,7 @@ wire  [7:0]   crc_d8  ; //输入待校验8位数据
 
 wire  [31:0]  crc_data; //CRC校验数据
 wire  [31:0]  crc_next; //CRC下次校验完成数据
-
+wire          sustain_flag;
 //*****************************************************
 //**                    main code
 //*****************************************************
@@ -81,7 +82,7 @@ udp_rx
     .rec_pkt_done    (rec_pkt_done),      
     .rec_en          (rec_en      ),            
     .rec_data        (rec_data    ),          
-    .rec_byte_num    (rec_byte_num)       
+    .sustain_flag    (sustain_flag)     
     );                                    
 
 //以太网发送模块
@@ -96,8 +97,7 @@ udp_tx
     .clk             (gmii_tx_clk),        
     .rst_n           (rst_n      ),             
     .tx_start_en     (tx_start_en),                   
-    .tx_data         (tx_data    ),           
-    .tx_byte_num     (tx_byte_num),    
+    .tx_data         (tx_data    ),             
     .des_mac         (des_mac    ),
     .des_ip          (des_ip     ),    
     .crc_data        (crc_data   ),          
@@ -107,7 +107,8 @@ udp_tx
     .gmii_tx_en      (gmii_tx_en ),         
     .gmii_txd        (gmii_txd   ),       
     .crc_en          (crc_en     ),            
-    .crc_clr         (crc_clr    )            
+    .crc_clr         (crc_clr    ),
+    .sustain_flag    (sustain_flag)    
     );                                      
 
 //以太网发送CRC校验模块

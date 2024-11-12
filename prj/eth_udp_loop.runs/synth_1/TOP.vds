@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Tue Nov 12 14:28:31 2024
-# Process ID: 25860
+# Start of session at: Tue Nov 12 15:29:59 2024
+# Process ID: 24520
 # Current directory: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1
 # Command line: vivado.exe -log TOP.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TOP.tcl
 # Log file: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/TOP.vds
@@ -17,14 +17,14 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 21912
+INFO: [Synth 8-7075] Helper process launched with PID 2532
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 1139.945 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 1139.664 ; gain = 0.000
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'TOP' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/TOP.v:4]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/.Xil/Vivado-25860-LEGION2020/realtime/clk_wiz_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/.Xil/Vivado-25860-LEGION2020/realtime/clk_wiz_0_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'eth_udp_loop' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/eth_udp_loop.v:23]
+INFO: [Synth 8-6157] synthesizing module 'TOP' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/TOP.v:5]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/.Xil/Vivado-24520-LEGION2020/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/.Xil/Vivado-24520-LEGION2020/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'eth_udp_loop' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/eth_udp_loop.v:24]
 	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
 	Parameter BOARD_IP bound to: -1062731510 - type: integer 
 	Parameter DES_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
@@ -146,12 +146,12 @@ INFO: [Synth 8-6157] synthesizing module 'icmp_tx' [D:/Project/FPGA/temporary/cc
 	Parameter ECHO_REPLY bound to: 8'b00000000 
 INFO: [Synth 8-6155] done synthesizing module 'icmp_tx' (16#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/icmp/icmp_tx.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'icmp' (17#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/icmp/icmp.v:23]
-INFO: [Synth 8-6157] synthesizing module 'udp' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp.v:23]
+INFO: [Synth 8-6157] synthesizing module 'udp' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp.v:24]
 	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
 	Parameter BOARD_IP bound to: -1062731510 - type: integer 
 	Parameter DES_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
 	Parameter DES_IP bound to: -1062731418 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'udp_rx' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp_rx.v:23]
+INFO: [Synth 8-6157] synthesizing module 'udp_rx' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp_rx.v:24]
 	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
 	Parameter BOARD_IP bound to: -1062731510 - type: integer 
 	Parameter st_idle bound to: 7'b0000001 
@@ -163,8 +163,10 @@ INFO: [Synth 8-6157] synthesizing module 'udp_rx' [D:/Project/FPGA/temporary/cc/
 	Parameter st_rx_end bound to: 7'b1000000 
 	Parameter ETH_TYPE bound to: 16'b0000100000000000 
 	Parameter UDP_TYPE bound to: 8'b00010001 
-INFO: [Synth 8-6155] done synthesizing module 'udp_rx' (18#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp_rx.v:23]
-INFO: [Synth 8-6157] synthesizing module 'udp_tx' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp_tx.v:23]
+	Parameter sustain_send_cmd bound to: 8'b10101010 
+	Parameter stop_send_cmd bound to: 8'b10111011 
+INFO: [Synth 8-6155] done synthesizing module 'udp_rx' (18#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp_rx.v:24]
+INFO: [Synth 8-6157] synthesizing module 'udp_tx' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp_tx.v:24]
 	Parameter BOARD_MAC bound to: 48'b000000000001000100100010001100110100010001010101 
 	Parameter BOARD_IP bound to: -1062731510 - type: integer 
 	Parameter DES_MAC bound to: 48'b111111111111111111111111111111111111111111111111 
@@ -178,13 +180,16 @@ INFO: [Synth 8-6157] synthesizing module 'udp_tx' [D:/Project/FPGA/temporary/cc/
 	Parameter st_crc bound to: 7'b1000000 
 	Parameter ETH_TYPE bound to: 16'b0000100000000000 
 	Parameter MIN_DATA_NUM bound to: 16'b0000000000010010 
-INFO: [Synth 8-6155] done synthesizing module 'udp_tx' (19#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp_tx.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'udp' (20#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp.v:23]
-INFO: [Synth 8-6157] synthesizing module 'async_fifo_2048x8b' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/.Xil/Vivado-25860-LEGION2020/realtime/async_fifo_2048x8b_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'async_fifo_2048x8b' (21#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/.Xil/Vivado-25860-LEGION2020/realtime/async_fifo_2048x8b_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'udp_tx' (19#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp_tx.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'udp' (20#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/udp/udp.v:24]
+WARNING: [Synth 8-7071] port 'rec_byte_num' of module 'udp' is unconnected for instance 'u_udp' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/eth_udp_loop.v:210]
+WARNING: [Synth 8-7071] port 'tx_byte_num' of module 'udp' is unconnected for instance 'u_udp' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/eth_udp_loop.v:210]
+WARNING: [Synth 8-7023] instance 'u_udp' of module 'udp' has 18 connections declared, but only 16 given [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/eth_udp_loop.v:210]
+INFO: [Synth 8-6157] synthesizing module 'async_fifo_2048x8b' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/.Xil/Vivado-24520-LEGION2020/realtime/async_fifo_2048x8b_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'async_fifo_2048x8b' (21#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/.Xil/Vivado-24520-LEGION2020/realtime/async_fifo_2048x8b_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'eth_ctrl' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/eth_ctrl.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'eth_ctrl' (22#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/eth_ctrl.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'eth_udp_loop' (23#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/eth_udp_loop.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'eth_udp_loop' (23#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/eth_udp_loop.v:24]
 INFO: [Synth 8-6157] synthesizing module 'AD_convert' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD_convert.v:2]
 INFO: [Synth 8-6155] done synthesizing module 'AD_convert' (24#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD_convert.v:2]
 INFO: [Synth 8-6157] synthesizing module 'AD9269' [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD9269.v:1]
@@ -231,20 +236,20 @@ INFO: [Synth 8-6157] synthesizing module 'AD9269_SPI' [D:/Project/FPGA/temporary
 INFO: [Synth 8-226] default block is never used [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD9269_SPI.v:96]
 INFO: [Synth 8-6155] done synthesizing module 'AD9269_SPI' (25#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD9269_SPI.v:1]
 INFO: [Synth 8-6155] done synthesizing module 'AD9269' (26#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD9269.v:1]
-INFO: [Synth 8-6155] done synthesizing module 'TOP' (27#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/TOP.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'TOP' (27#1) [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/TOP.v:5]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1228.320 ; gain = 88.375
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1227.398 ; gain = 87.734
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1228.320 ; gain = 88.375
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1245.328 ; gain = 105.664
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1228.320 ; gain = 88.375
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:08 . Memory (MB): peak = 1245.328 ; gain = 105.664
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.094 . Memory (MB): peak = 1228.320 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.085 . Memory (MB): peak = 1257.363 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 15 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -264,21 +269,21 @@ Parsing XDC File [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.
 Finished Parsing XDC File [D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1361.598 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1366.855 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.038 . Memory (MB): peak = 1361.598 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1366.855 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'u_eth_udp_loop/u_async_fifo_2048x8b' at clock pin 'rd_clk' is different from the actual clock period '8.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1361.598 ; gain = 221.652
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1366.855 ; gain = 227.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1361.598 ; gain = 221.652
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1366.855 ; gain = 227.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -288,7 +293,7 @@ Applied set_property CLOCK_BUFFER_TYPE = NONE for sys_clk. (constraint file  d:/
 Applied set_property KEEP_HIERARCHY = SOFT for u_eth_udp_loop/u_async_fifo_2048x8b. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for u_clk_wiz_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1361.598 ; gain = 221.652
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1366.855 ; gain = 227.191
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'cur_state_reg' in module 'arp_rx'
 INFO: [Synth 8-802] inferred FSM for state register 'cur_state_reg' in module 'arp_tx'
@@ -386,7 +391,7 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'cur_state_reg' in modul
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'STATE_reg' using encoding 'sequential' in module 'AD9269_SPI'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:18 . Memory (MB): peak = 1361.598 ; gain = 221.652
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:18 . Memory (MB): peak = 1366.855 ; gain = 227.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -396,7 +401,7 @@ Detailed RTL Component Info :
 	   2 Input   32 Bit       Adders := 3     
 	   4 Input   32 Bit       Adders := 1     
 	  10 Input   20 Bit       Adders := 2     
-	   3 Input   17 Bit       Adders := 2     
+	   3 Input   17 Bit       Adders := 1     
 	   2 Input   17 Bit       Adders := 3     
 	   2 Input   16 Bit       Adders := 17    
 	   2 Input    6 Bit       Adders := 2     
@@ -422,7 +427,7 @@ Detailed RTL Component Info :
 	                6 Bit    Registers := 2     
 	                5 Bit    Registers := 8     
 	                2 Bit    Registers := 4     
-	                1 Bit    Registers := 53    
+	                1 Bit    Registers := 54    
 +---Muxes : 
 	   5 Input   48 Bit        Muxes := 1     
 	   2 Input   48 Bit        Muxes := 1     
@@ -466,13 +471,13 @@ Detailed RTL Component Info :
 	   7 Input    2 Bit        Muxes := 1     
 	   3 Input    2 Bit        Muxes := 1     
 	   5 Input    1 Bit        Muxes := 21    
-	   2 Input    1 Bit        Muxes := 91    
+	   2 Input    1 Bit        Muxes := 94    
 	   4 Input    1 Bit        Muxes := 21    
 	   7 Input    1 Bit        Muxes := 40    
 	   8 Input    1 Bit        Muxes := 21    
 	   6 Input    1 Bit        Muxes := 2     
 	  10 Input    1 Bit        Muxes := 2     
-	   3 Input    1 Bit        Muxes := 2     
+	   3 Input    1 Bit        Muxes := 3     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -489,26 +494,26 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:37 . Memory (MB): peak = 1361.598 ; gain = 221.652
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:38 . Memory (MB): peak = 1366.855 ; gain = 227.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-565] redefining clock 'sys_clk'
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:33 ; elapsed = 00:00:43 . Memory (MB): peak = 1361.598 ; gain = 221.652
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:45 . Memory (MB): peak = 1366.855 ; gain = 227.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:48 . Memory (MB): peak = 1403.547 ; gain = 263.602
+Finished Timing Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:51 . Memory (MB): peak = 1408.102 ; gain = 268.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:49 . Memory (MB): peak = 1413.621 ; gain = 273.676
+Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:53 . Memory (MB): peak = 1418.184 ; gain = 278.520
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -526,37 +531,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:41 ; elapsed = 00:00:53 . Memory (MB): peak = 1426.750 ; gain = 286.805
+Finished IO Insertion : Time (s): cpu = 00:00:37 ; elapsed = 00:00:57 . Memory (MB): peak = 1418.184 ; gain = 278.520
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:41 ; elapsed = 00:00:53 . Memory (MB): peak = 1426.750 ; gain = 286.805
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:37 ; elapsed = 00:00:57 . Memory (MB): peak = 1418.184 ; gain = 278.520
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:41 ; elapsed = 00:00:54 . Memory (MB): peak = 1426.750 ; gain = 286.805
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:37 ; elapsed = 00:00:57 . Memory (MB): peak = 1418.184 ; gain = 278.520
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:41 ; elapsed = 00:00:54 . Memory (MB): peak = 1426.750 ; gain = 286.805
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:37 ; elapsed = 00:00:57 . Memory (MB): peak = 1418.184 ; gain = 278.520
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:00:54 . Memory (MB): peak = 1426.750 ; gain = 286.805
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:37 ; elapsed = 00:00:57 . Memory (MB): peak = 1418.184 ; gain = 278.520
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:41 ; elapsed = 00:00:54 . Memory (MB): peak = 1426.750 ; gain = 286.805
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:37 ; elapsed = 00:00:57 . Memory (MB): peak = 1418.184 ; gain = 278.520
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -593,48 +598,48 @@ Report Cell Usage:
 |2     |clk_wiz            |     1|
 |3     |BUFG               |     3|
 |4     |BUFIO              |     1|
-|5     |CARRY4             |   201|
+|5     |CARRY4             |   181|
 |6     |IDDR               |     5|
 |7     |IDELAYCTRL         |     1|
 |8     |IDELAYE2           |     5|
-|9     |LUT1               |   193|
-|10    |LUT2               |   407|
-|11    |LUT3               |   196|
-|12    |LUT4               |   321|
-|13    |LUT5               |   400|
-|14    |LUT6               |   757|
+|9     |LUT1               |   133|
+|10    |LUT2               |   394|
+|11    |LUT3               |   216|
+|12    |LUT4               |   294|
+|13    |LUT5               |   416|
+|14    |LUT6               |   754|
 |15    |ODDR               |     5|
 |16    |SRL16E             |     2|
-|17    |FDCE               |  1145|
+|17    |FDCE               |  1093|
 |18    |FDPE               |   269|
-|19    |FDRE               |   177|
+|19    |FDRE               |   153|
 |20    |FDSE               |    20|
 |21    |LDC                |     4|
 |22    |IBUF               |     8|
 |23    |OBUF               |    13|
 +------+-------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:41 ; elapsed = 00:00:54 . Memory (MB): peak = 1426.750 ; gain = 286.805
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:37 ; elapsed = 00:00:57 . Memory (MB): peak = 1418.184 ; gain = 278.520
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:35 ; elapsed = 00:00:51 . Memory (MB): peak = 1426.750 ; gain = 153.527
-Synthesis Optimization Complete : Time (s): cpu = 00:00:41 ; elapsed = 00:00:54 . Memory (MB): peak = 1426.750 ; gain = 286.805
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:31 ; elapsed = 00:00:54 . Memory (MB): peak = 1418.184 ; gain = 156.992
+Synthesis Optimization Complete : Time (s): cpu = 00:00:37 ; elapsed = 00:00:57 . Memory (MB): peak = 1418.184 ; gain = 278.520
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.054 . Memory (MB): peak = 1434.812 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 220 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.054 . Memory (MB): peak = 1418.184 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 200 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 1 inverter(s) to 2 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1434.824 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1418.184 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 4 instances were transformed.
   LDC => LDCE: 4 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-87 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+87 Infos, 7 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:46 ; elapsed = 00:01:03 . Memory (MB): peak = 1434.824 ; gain = 294.879
+synth_design: Time (s): cpu = 00:00:43 ; elapsed = 00:01:06 . Memory (MB): peak = 1418.184 ; gain = 278.520
 INFO: [Common 17-1381] The checkpoint 'D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.runs/synth_1/TOP.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file TOP_utilization_synth.rpt -pb TOP_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Nov 12 14:29:42 2024...
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 12 15:31:13 2024...
