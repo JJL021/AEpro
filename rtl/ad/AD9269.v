@@ -3,7 +3,7 @@ module AD9269(
     input  wire         SYS_RST ,
     input  wire         OTR     ,  // 通道A超出范围信号
     input  wire         DCO     ,  // A通道数字时钟输出
-    input  wire [15:0]  DB15_0  ,  // 通道A的数据
+    //input  wire [15:0]  DB15_0  ,  // 通道A的数据
     output wire         OEB     ,   //输出使能 低有效
     output wire         PDWM    ,
     output wire         SCLK    ,
@@ -17,6 +17,16 @@ module AD9269(
 reg [15:0] AD_DATA_A;
 reg [15:0] AD_DATA_B;
 wire locked;
+
+//自定义
+reg [15:0]  DB15_0;
+always @(posedge AD_CLK or negedge SYS_RST) begin 
+  if(!SYS_RST)
+    DB15_0 <= 16'b0;
+  else
+    DB15_0 <= 16'b0;
+end
+
 
 // 时序参考数据手册第8页
 always@(posedge DCO)

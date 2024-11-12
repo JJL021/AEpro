@@ -315,6 +315,7 @@ eth_ctrl u_eth_ctrl(
 //         my_send <=  my_send + 1'b1;
 // end
 
+
 AD_convert u_ad_convert(
 
     .clk     (sys_clk), 
@@ -330,7 +331,7 @@ AD9269 u_ad9269(
    . SYS_RST (sys_rst_n),
    . OTR     (OTR),
    . DCO     (DCO),
-   . DB15_0  (DB15_0),
+   //. DB15_0  (DB15_0),
    . OEB     (OEB),
    . PDWM    (PDWM),
    . SCLK    (SCLK),
