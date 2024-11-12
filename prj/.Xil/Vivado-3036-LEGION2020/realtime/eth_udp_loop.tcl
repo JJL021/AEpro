@@ -34,16 +34,12 @@ set rt::rc [catch {
 
     set rt::useElabCache false
     if {$rt::useElabCache == false} {
-      rt::read_verilog -sv -include D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.srcs/sources_1/ip/clk_wiz_0 {
+      rt::read_verilog -sv {
       F:/Software/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv
       F:/Software/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv
     }
-      rt::read_verilog -include D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.srcs/sources_1/ip/clk_wiz_0 {
+      rt::read_verilog {
       D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/.Xil/Vivado-3036-LEGION2020/realtime/async_fifo_2048x8b_stub.v
-      D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/.Xil/Vivado-3036-LEGION2020/realtime/clk_wiz_0_stub.v
-      D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD9269.v
-      D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD9269_SPI.v
-      D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD_convert.v
       D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/arp/arp.v
       D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/arp/arp_rx.v
       D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/arp/arp_tx.v

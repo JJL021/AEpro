@@ -92,9 +92,6 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD9269.v
-  D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD9269_SPI.v
-  D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/ad/AD_convert.v
   D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/arp/arp.v
   D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/arp/arp_rx.v
   D:/Project/FPGA/temporary/cc/41_eth_udp_loop/rtl/arp/arp_tx.v
@@ -115,11 +112,6 @@ read_ip -quiet D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.src
 set_property used_in_implementation false [get_files -all d:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b.xdc]
 set_property used_in_implementation false [get_files -all d:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b_clocks.xdc]
 set_property used_in_implementation false [get_files -all d:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/async_fifo_2048x8b/async_fifo_2048x8b_ooc.xdc]
-
-read_ip -quiet D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-set_property used_in_implementation false [get_files -all d:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
-set_property used_in_implementation false [get_files -all d:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

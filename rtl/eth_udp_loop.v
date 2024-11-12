@@ -16,35 +16,23 @@
 // Created date:        2020/2/18 9:20:14
 // Version:             V1.0
 // Descriptions:        The original version
-//增加了ad_clk的输出引脚
+//第三次提交:增加了ad_clk的输出引脚
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
 
 module eth_udp_loop(
-    input              sys_clk   , //系统时钟
-    input              sys_rst_n , //系统复位信号，低电平有效 
-    //PL以太网RGMII接口   
-    input              eth_rxc   , //RGMII接收数据时钟
-    input              eth_rx_ctl, //RGMII输入数据有效信号
-    input       [3:0]  eth_rxd   , //RGMII输入数据
-    output             eth_txc   , //RGMII发送数据时钟    
-    output             eth_tx_ctl, //RGMII输出数据有效信号
-    output      [3:0]  eth_txd   , //RGMII输出数据          
-    output             eth_rst_n ,   //以太网芯片复位信号，低电平有效   
-
-    //AD接口
-    input  wire         OTR     ,  // 通道A超出范围信号
-    input  wire         DCO     ,  // A通道数字时钟输出
-    input  wire [15:0]  DB15_0  ,  // 通道A的数据
-    output wire         OEB     ,   //输出使能 低有效
-    output wire         PDWM    ,
-    output wire         SCLK    ,
-    output wire         CSB     , //spi_cs
-    output wire         SDIO    ,
-    output wire         AD_CLK 
-
- 
-
+    input              clk_200m   ,          //系统时钟
+    input              sys_rst_n ,          //系统复位信号，低电平有效 
+    //PL以太网RGMII接口             
+    input              eth_rxc   ,          //RGMII接收数据时钟
+    input              eth_rx_ctl,          //RGMII输入数据有效信号
+    input       [3:0]  eth_rxd   ,          //RGMII输入数据
+    output             eth_txc   ,          //RGMII发送数据时钟    
+    output             eth_tx_ctl,          //RGMII输出数据有效信号
+    output      [3:0]  eth_txd   ,          //RGMII输出数据          
+    output             eth_rst_n ,          //以太网芯片复位信号，低电平有效   
+    //自定义
+    input       [7:0]   my_send             //ad数据
     );
 
 //parameter define
@@ -60,7 +48,7 @@ parameter  DES_IP    = {8'd192,8'd168,8'd1,8'd102};
 parameter IDELAY_VALUE = 0;
 
 //wire define
-wire          clk_200m   		  ; //用于IO延时的时钟 
+//wire          clk_200m   		  ; //用于IO延时的时钟 
 								  
 wire          gmii_rx_clk		  ; //GMII接收时钟
 wire          gmii_rx_dv 		  ; //GMII接收数据有效信号
@@ -109,13 +97,10 @@ wire  [7:0]	  rec_data			  ;
 wire		  rec_en			  ;
 wire		  tx_req			  ;
 wire  [7:0]	  tx_data	    	  ;
-wire  [7:0]   my_send             ;
 
 
-//AD
 
-wire [15:0]  DATA_A  ;
-wire [15:0]  DATA_B;
+
 //*****************************************************
 //**                    main code
 //*****************************************************
@@ -129,15 +114,7 @@ assign des_mac = src_mac;
 assign des_ip = src_ip;
 assign eth_rst_n = sys_rst_n;
 
-//MMCM/PLL
-clk_wiz_0 u_clk_wiz_0
-   (
-    .clk_out2(AD_CLK),
-    .clk_out1(clk_200m),     // output clk_out1
-    .reset(~sys_rst_n), 	 // input reset
-    .locked(locked),         // output locked
-    .clk_in1(sys_clk)
-    );  
+
 
 //GMII接口转RGMII接口
 gmii_to_rgmii 
@@ -315,36 +292,6 @@ eth_ctrl u_eth_ctrl(
 //     else
 //         my_send <=  my_send + 1'b1;
 // end
-
-
-AD_convert u_ad_convert(
-
-    .clk     (sys_clk), 
-    .rst     (sys_rst_n),
-    .din     (DATA_A), 
-    .dout    (my_send)
-
-);
-
-
-AD9269 u_ad9269(
-   . AD_CLK  (AD_CLK),
-   . SYS_RST (sys_rst_n),
-   . OTR     (OTR),
-   . DCO     (DCO),
-   //. DB15_0  (DB15_0),
-   . OEB     (OEB),
-   . PDWM    (PDWM),
-   . SCLK    (SCLK),
-   . CSB     (CSB),
-   . SDIO    (SDIO),
-   . DATA_A  (DATA_A),
-   . DATA_B  (DATA_B)
-
-
-);
-
-
 
 
 endmodule
