@@ -1,0 +1,42 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Nov 11 21:44:08 2024
+# Process ID: 27640
+# Current directory: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj
+# Command line: vivado.exe D:\Project\FPGA\temporary\cc\41_eth_udp_loop\prj\eth_udp_loop.xpr
+# Log file: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/vivado.log
+# Journal file: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.xpr
+update_compile_order -fileset sources_1
+reset_run impl_1
+launch_runs impl_1 -jobs 11
+wait_on_run impl_1
+open_run synth_1 -name synth_1
+set_property IOSTANDARD LVCMOS33 [get_ports [list CSB]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list DCO]]
+place_ports CSB J14
+place_ports DCO L16
+place_ports OEB V18
+place_ports OEB V17
+place_ports OEB V18
+place_ports OTR V17
+place_ports PDWM M15
+place_ports SCLK R18
+place_ports SDIO K14
+set_property IOSTANDARD LVCMOS33 [get_ports [list OEB]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list OTR]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list PDWM]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list SCLK]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list SDIO]]
+save_constraints
+reset_run synth_1
+launch_runs synth_1 -jobs 11
+wait_on_run synth_1
+launch_runs impl_1 -jobs 11
+wait_on_run impl_1
+close_design
+open_run impl_1

@@ -1,0 +1,20 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Nov  9 22:02:31 2024
+# Process ID: 26256
+# Current directory: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj
+# Command line: vivado.exe D:\Project\FPGA\temporary\cc\41_eth_udp_loop\prj\eth_udp_loop.xpr
+# Log file: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/vivado.log
+# Journal file: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.xpr
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc] -no_script -reset -force -quiet
+remove_files  -fileset constrs_1 D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/eth_udp_loop.xdc
+reset_run synth_1
+launch_runs impl_1 -jobs 11
+wait_on_run impl_1
+open_run impl_1

@@ -1,0 +1,63 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Nov 11 12:40:39 2024
+# Process ID: 5220
+# Current directory: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj
+# Command line: vivado.exe D:\Project\FPGA\temporary\cc\41_eth_udp_loop\prj\eth_udp_loop.xpr
+# Log file: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/vivado.log
+# Journal file: D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.xpr
+update_compile_order -fileset sources_1
+open_run impl_1
+create_clock -period 20.000 -name sys_clk -waveform {0.000 10.000} [get_ports sys_clk]
+create_clock -period 8.000 -name eth_rxc -waveform {0.000 4.000} [get_ports eth_rxc]
+file mkdir D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/new
+close [ open D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/new/new2.xdc w ]
+add_files -fileset constrs_1 D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/new/new2.xdc
+set_property target_constrs_file D:/Project/FPGA/temporary/cc/41_eth_udp_loop/prj/eth_udp_loop.srcs/constrs_1/new/new2.xdc [current_fileset -constrset]
+save_constraints -force
+reset_run synth_1
+launch_runs impl_1 -jobs 11
+wait_on_run impl_1
+refresh_design
+reset_run impl_1
+launch_runs impl_1 -jobs 11
+wait_on_run impl_1
+refresh_design
+reset_run synth_1
+launch_runs impl_1 -jobs 12
+wait_on_run impl_1
+refresh_design
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_2
+reset_run synth_1
+launch_runs impl_1 -jobs 12
+wait_on_run impl_1
+refresh_design
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+reset_run synth_1
+launch_runs impl_1 -jobs 12
+wait_on_run impl_1
+refresh_design
+reset_run synth_1
+launch_runs impl_1 -jobs 12
+wait_on_run impl_1
+refresh_design
+save_constraints
+reset_run synth_1
+reset_run impl_1
+launch_runs impl_1 -jobs 12
+wait_on_run impl_1
+refresh_design
+reset_run synth_1
+launch_runs impl_1 -jobs 12
+wait_on_run impl_1
+refresh_design
+reset_run synth_1
+launch_runs impl_1 -jobs 12
+wait_on_run impl_1
+refresh_design
