@@ -41,7 +41,7 @@ module udp(
     input        [47:0]  des_mac     , //发送的目标MAC地址
     input        [31:0]  des_ip      , //发送的目标IP地址    
     output               tx_done     , //以太网发送完成信号
-    output               tx_req,        //读数据请求信号   
+    output               tx_req，        //读数据请求信号   
     output               sustain_flag 
     );
 

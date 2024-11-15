@@ -35,8 +35,7 @@ module eth_udp_loop(
     //自定义
     input       [7:0]   my_send,             //ad数据
     output              gmii_rx_clk,
-    output              sustain_flag,
-    output              udp_tx_req
+    output              sustain_flag
     );
 
 //parameter define
@@ -93,7 +92,7 @@ wire  [ 7:0]  udp_rec_data  	  ; //UDP接收的数据
 wire  [15:0]  rec_byte_num  	  ; //UDP接收的有效字节数 单位:byte 
 wire  [15:0]  tx_byte_num   	  ; //UDP发送的有效字节数 单位:byte 
 wire          udp_tx_done   	  ; //UDP发送完成信号
-//wire          udp_tx_req    	  ; //UDP读数据请求信号
+wire          udp_tx_req    	  ; //UDP读数据请求信号
 wire  [ 7:0]  udp_tx_data   	  ; //UDP待发送数据
 wire          tx_start_en   	  ; //UDP发送开始使能信号
 								  

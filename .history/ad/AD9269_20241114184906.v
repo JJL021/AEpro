@@ -17,8 +17,7 @@ module AD9269(
 
 reg [15:0] AD_DATA_A;
 reg [15:0] AD_DATA_B;
-reg        start_collect_flag_d0;
-reg        start_collect_flag_d1;
+wire locked;
 wire         DCO;
 assign DCO = AD_CLK;
 
@@ -27,20 +26,8 @@ assign DCO = AD_CLK;
 always @(posedge AD_CLK or negedge SYS_RST) begin 
   if(!SYS_RST)
     DB15_0 <= 16'b0;
-  else if(start_collect_flag_d1)
-    DB15_0 <= DB15_0+ 16'h1;
-  else 
-    DB15_0 <= 16'b0;
-end
-
-//同步到写时钟域
-always @(posedge AD_CLK or negedge SYS_RST) begin 
-  if(!SYS_RST)
-    start_collect_flag_d0 <= 1'b0;
-  else  begin
-    start_collect_flag_d0 <= start_collect_flag;
-    start_collect_flag_d1 <= start_collect_flag_d0;
-  end
+  else
+    DB15_0 <= DB15_0+ 16'h1205;
 end
 
 
@@ -64,8 +51,8 @@ AD9269_SPI U_AD9269_SPI(
   .MOSI   (SDIO   )
 );
 
-assign OEB  = ~start_collect_flag_d1;
-assign PDWM = ~start_collect_flag_d1;
+assign OEB  = 1'b0;
+assign PDWM = 1'b0;
 
 assign DATA_A = AD_DATA_A;
 assign DATA_B = AD_DATA_B;

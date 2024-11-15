@@ -77,9 +77,9 @@ reg		   udp_tx_req_d0;   //UDP读数据请求信号寄存器
 //*****************************************************
 
 assign arp_tx_type = 1'b1;   									//ARP发送类型固定为ARP应答    				
-assign tx_req = udp_tx_req ? 1'b1 : icmp_tx_req;			    //读数据请求信号选择  
+assign tx_req = udp_tx_req ? 1'b1 : icmp_tx_req;			    //读数据请求信号选择
 assign icmp_tx_data = icmp_tx_req_d0 ? tx_data : 8'd0;			//ICMP待发送数据选择
-assign udp_tx_data  = udp_tx_req_d0  ? number : 8'd0;			//UDP待发送数据选择  udp发送请求没用 fifo输出的数据被换为number了
+assign udp_tx_data  = udp_tx_req_d0  ? number : 8'd0;			//UDP待发送数据选择
 
 //ICMP读数据请求信号和UDP读数据请求信号寄存一拍
 always @(posedge clk or negedge rst_n) begin

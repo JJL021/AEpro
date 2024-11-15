@@ -96,7 +96,7 @@ AD9269 u_ad9269(
    . CSB                (CSB),
    . SDIO               (SDIO),
    . DATA_A             (DATA_A),
-   . DATA_B             (DATA_B),
+   . DATA_B             (DATA_B)
    .start_collect_flag  (start_collect_flag)
 );
 

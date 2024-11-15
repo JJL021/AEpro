@@ -85,19 +85,18 @@ eth_udp_loop u_eth_udp_loop(
 
 AD9269 u_ad9269(
 
-   . AD_CLK             (AD_CLK),
-   . SYS_RST            (sys_rst_n),
-   . OTR                (OTR),
-   //. DCO              (DCO),
-   //. DB15_0           (DB15_0),
-   . OEB                (OEB),
-   . PDWM               (PDWM),
-   . SCLK               (SCLK),
-   . CSB                (CSB),
-   . SDIO               (SDIO),
-   . DATA_A             (DATA_A),
-   . DATA_B             (DATA_B),
-   .start_collect_flag  (start_collect_flag)
+   . AD_CLK  (AD_CLK),
+   . SYS_RST (sys_rst_n),
+   . OTR     (OTR),
+   //. DCO     (DCO),
+   //. DB15_0  (DB15_0),
+   . OEB     (OEB),
+   . PDWM    (PDWM),
+   . SCLK    (SCLK),
+   . CSB     (CSB),
+   . SDIO    (SDIO),
+   . DATA_A  (DATA_A),
+   . DATA_B  (DATA_B)
 );
 
 async_fifo_ip u_async_fifo_ip(      //替代了AD_convert的功能

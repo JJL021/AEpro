@@ -35,7 +35,7 @@ module eth_udp_loop(
     //自定义
     input       [7:0]   my_send,             //ad数据
     output              gmii_rx_clk,
-    output              sustain_flag,
+    output              sustain_flag，
     output              udp_tx_req
     );
 

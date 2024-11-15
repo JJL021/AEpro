@@ -41,8 +41,7 @@ module udp(
     input        [47:0]  des_mac     , //发送的目标MAC地址
     input        [31:0]  des_ip      , //发送的目标IP地址    
     output               tx_done     , //以太网发送完成信号
-    output               tx_req,        //读数据请求信号   
-    output               sustain_flag 
+    output               tx_req        //读数据请求信号    
     );
 
 //parameter define
@@ -62,7 +61,7 @@ wire  [7:0]   crc_d8  ; //输入待校验8位数据
 
 wire  [31:0]  crc_data; //CRC校验数据
 wire  [31:0]  crc_next; //CRC下次校验完成数据
-//wire          sustain_flag;
+wire          sustain_flag;
 //*****************************************************
 //**                    main code
 //*****************************************************

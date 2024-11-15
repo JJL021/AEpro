@@ -25,21 +25,19 @@ output wire         PDWM    ,
 output wire         SCLK    ,
 output wire         CSB     ,       //spi_cs
 output wire         SDIO    ,
-(*mark_debug = "true"*)output wire         AD_CLK 
+output wire         AD_CLK 
 );
 
 
 //wire
-(*mark_debug = "true"*)wire [15:0]  DATA_A;
+wire [15:0]  DATA_A;
 wire [15:0]  DATA_B;
-(*mark_debug = "true"*)wire [7:0]   my_send;
+wire [7:0]   my_send;
 wire        clk_200m;
 
 wire locked;
 wire rst_n;
-(*mark_debug = "true"*)wire gmii_rx_clk;
-(*mark_debug = "true"*)wire start_collect_flag;
-(*mark_debug = "true"*)wire udp_tx_req;
+
 
 assign rst_n = sys_rst_n & locked;  // 综合复位信号
 
@@ -67,10 +65,7 @@ eth_udp_loop u_eth_udp_loop(
     .eth_tx_ctl     (eth_tx_ctl), 
     .eth_txd        (eth_txd   ), 
     .eth_rst_n      (eth_rst_n ),
-    .my_send        (my_send   ),
-    .gmii_rx_clk    (gmii_rx_clk),  //async——FIFO用
-    .sustain_flag   (start_collect_flag),
-    .udp_tx_req     (udp_tx_req)
+    .my_send        (my_send   )
 );
 
 // AD_convert u_ad_convert(
@@ -85,29 +80,28 @@ eth_udp_loop u_eth_udp_loop(
 
 AD9269 u_ad9269(
 
-   . AD_CLK             (AD_CLK),
-   . SYS_RST            (sys_rst_n),
-   . OTR                (OTR),
-   //. DCO              (DCO),
-   //. DB15_0           (DB15_0),
-   . OEB                (OEB),
-   . PDWM               (PDWM),
-   . SCLK               (SCLK),
-   . CSB                (CSB),
-   . SDIO               (SDIO),
-   . DATA_A             (DATA_A),
-   . DATA_B             (DATA_B),
-   .start_collect_flag  (start_collect_flag)
+   . AD_CLK  (AD_CLK),
+   . SYS_RST (sys_rst_n),
+   . OTR     (OTR),
+   . DCO     (DCO),
+   //. DB15_0  (DB15_0),
+   . OEB     (OEB),
+   . PDWM    (PDWM),
+   . SCLK    (SCLK),
+   . CSB     (CSB),
+   . SDIO    (SDIO),
+   . DATA_A  (DATA_A),
+   . DATA_B  (DATA_B)
 );
 
-async_fifo_ip u_async_fifo_ip(      //替代了AD_convert的功能
+async_fifo_ip u_async_fifo_ip(
 
     .rst_n               (rst_n), 
     .wr_clk              (AD_CLK),
     .rd_clk              (gmii_rx_clk),
-    .fifo_rd_req         (udp_tx_req),  //tx_req
+    .fifo_rd_req         (fifo_rd_req),  //tx_req
     .fifo_wr_data        (DATA_A),
-    .fifo_rd_data        (my_send),
+    .fifo_rd_data        (tx_data),
     .start_collect_flag  (start_collect_flag)
 
 );

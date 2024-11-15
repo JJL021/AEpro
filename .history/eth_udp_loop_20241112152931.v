@@ -33,10 +33,7 @@ module eth_udp_loop(
     output      [3:0]  eth_txd   ,          //RGMII输出数据          
     output             eth_rst_n ,          //以太网芯片复位信号，低电平有效   
     //自定义
-    input       [7:0]   my_send,             //ad数据
-    output              gmii_rx_clk,
-    output              sustain_flag,
-    output              udp_tx_req
+    input       [7:0]   my_send             //ad数据
     );
 
 //parameter define
@@ -54,7 +51,7 @@ parameter IDELAY_VALUE = 0;
 //wire define
 //wire          clk_200m   		  ; //用于IO延时的时钟 
 								  
-//wire          gmii_rx_clk		  ; //GMII接收时钟
+wire          gmii_rx_clk		  ; //GMII接收时钟
 wire          gmii_rx_dv 		  ; //GMII接收数据有效信号
 wire  [7:0]   gmii_rxd   		  ; //GMII接收数据
 wire          gmii_tx_clk		  ; //GMII发送时钟
@@ -93,7 +90,7 @@ wire  [ 7:0]  udp_rec_data  	  ; //UDP接收的数据
 wire  [15:0]  rec_byte_num  	  ; //UDP接收的有效字节数 单位:byte 
 wire  [15:0]  tx_byte_num   	  ; //UDP发送的有效字节数 单位:byte 
 wire          udp_tx_done   	  ; //UDP发送完成信号
-//wire          udp_tx_req    	  ; //UDP读数据请求信号
+wire          udp_tx_req    	  ; //UDP读数据请求信号
 wire  [ 7:0]  udp_tx_data   	  ; //UDP待发送数据
 wire          tx_start_en   	  ; //UDP发送开始使能信号
 								  
@@ -230,8 +227,7 @@ udp
     .des_mac       (des_mac     ),
     .des_ip        (des_ip      ),    
     .tx_done       (udp_tx_done ),        
-    .tx_req        (udp_tx_req  ),
-    .sustain_flag  (sustain_flag)           
+    .tx_req        (udp_tx_req  )           
     ); 
 
 //异步FIFO

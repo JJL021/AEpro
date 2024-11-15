@@ -2,7 +2,7 @@ module AD9269(
     input  wire         AD_CLK ,
     input  wire         SYS_RST ,
     input  wire         OTR     ,  // 通道A超出范围信号
-    //input  wire         DCO     ,  // A通道数字时钟输出
+    input  wire         DCO     ,  // A通道数字时钟输出
     //input  wire [15:0]  DB15_0  ,  // 通道A的数据
     output wire         OEB     ,   //输出使能 低有效
     output wire         PDWM    ,
@@ -10,37 +10,21 @@ module AD9269(
     output wire         CSB     , //spi_cs
     output wire         SDIO    ,
     output wire [15:0]  DATA_A  ,
-    output wire [15:0]  DATA_B  ,
-    input               start_collect_flag
+    output wire [15:0]  DATA_B
 );
 
 
 reg [15:0] AD_DATA_A;
 reg [15:0] AD_DATA_B;
-reg        start_collect_flag_d0;
-reg        start_collect_flag_d1;
-wire         DCO;
-assign DCO = AD_CLK;
+wire locked;
 
 //自定义
-(*mark_debug = "true"*)reg [15:0]  DB15_0;
+reg [15:0]  DB15_0;
 always @(posedge AD_CLK or negedge SYS_RST) begin 
   if(!SYS_RST)
     DB15_0 <= 16'b0;
-  else if(start_collect_flag_d1)
-    DB15_0 <= DB15_0+ 16'h1;
-  else 
-    DB15_0 <= 16'b0;
-end
-
-//同步到写时钟域
-always @(posedge AD_CLK or negedge SYS_RST) begin 
-  if(!SYS_RST)
-    start_collect_flag_d0 <= 1'b0;
-  else  begin
-    start_collect_flag_d0 <= start_collect_flag;
-    start_collect_flag_d1 <= start_collect_flag_d0;
-  end
+  else
+    DB15_0 <= 16'h3456;
 end
 
 
@@ -64,8 +48,8 @@ AD9269_SPI U_AD9269_SPI(
   .MOSI   (SDIO   )
 );
 
-assign OEB  = ~start_collect_flag_d1;
-assign PDWM = ~start_collect_flag_d1;
+assign OEB  = 1'b0;
+assign PDWM = 1'b0;
 
 assign DATA_A = AD_DATA_A;
 assign DATA_B = AD_DATA_B;

@@ -28,7 +28,7 @@ always @(posedge AD_CLK or negedge SYS_RST) begin
   if(!SYS_RST)
     DB15_0 <= 16'b0;
   else if(start_collect_flag_d1)
-    DB15_0 <= DB15_0+ 16'h1;
+    DB15_0 <= DB15_0+ 16'h1205;
   else 
     DB15_0 <= 16'b0;
 end
@@ -37,7 +37,7 @@ end
 always @(posedge AD_CLK or negedge SYS_RST) begin 
   if(!SYS_RST)
     start_collect_flag_d0 <= 1'b0;
-  else  begin
+  else if(start_collect_flag_d0) begin
     start_collect_flag_d0 <= start_collect_flag;
     start_collect_flag_d1 <= start_collect_flag_d0;
   end
