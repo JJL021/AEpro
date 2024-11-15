@@ -74,7 +74,7 @@ eth_udp_loop u_eth_udp_loop(
     .gmii_rx_clk    (gmii_rx_clk),  //async——FIFO用
     .sustain_flag   (start_collect_flag),
     .udp_tx_req     (udp_tx_req),
-    .fifo_rd_valid  (fifo_rd_valid)
+    .valid          (valid)
 );
 
 // AD_convert u_ad_convert(
@@ -113,7 +113,7 @@ async_fifo_ip u_async_fifo_ip(      //替代了AD_convert的功能
     .fifo_wr_data        (DATA_A),
     .fifo_rd_data        (my_send),
     .start_collect_flag  (start_collect_flag),
-    .wr_ack              (fifo_wc_ack),
+    .wr_ack              (wr_ack),
     .valid               (fifo_rd_valid)
 
 );

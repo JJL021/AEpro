@@ -110,8 +110,7 @@ udp_tx
     .gmii_txd        (gmii_txd   ),       
     .crc_en          (crc_en     ),            
     .crc_clr         (crc_clr    ),
-    .sustain_flag    (sustain_flag),
-    .fifo_rd_valid   (fifo_rd_valid)    
+    .sustain_flag    (sustain_flag)    
     );                                      
 
 //以太网发送CRC校验模块

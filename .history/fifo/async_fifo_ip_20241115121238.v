@@ -6,9 +6,7 @@ module async_fifo_ip(
     input           fifo_rd_req,
     input [15:0]    fifo_wr_data,
     input           start_collect_flag,
-    output [7:0]    fifo_rd_data,
-    output          valid,
-    output          wr_ack
+    output [7:0]    fifo_rd_data
 
 );
 
@@ -24,7 +22,6 @@ wire [10:0]wr_data_count;
 wire [9:0]rd_data_count;
 wire wr_rst_busy;
 wire rd_rst_busy;
-
 
 async_fifo u_async_fifo (
   .rst(~rst_n),                      // input wire rst

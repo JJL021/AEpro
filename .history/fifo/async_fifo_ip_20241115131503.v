@@ -7,8 +7,8 @@ module async_fifo_ip(
     input [15:0]    fifo_wr_data,
     input           start_collect_flag,
     output [7:0]    fifo_rd_data,
-    output          valid,
-    output          wr_ack
+    output          valid;
+    output          wr_ack;
 
 );
 

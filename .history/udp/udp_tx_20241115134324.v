@@ -34,12 +34,12 @@ module udp_tx(
     output  reg          tx_done    , //以太网发送完成信号
     output  reg          tx_req     , //读数据请求信号
     output  reg          gmii_tx_en , //GMII输出数据有效信号
-    (*mark_debug = "true"*)output  reg  [7:0]   gmii_txd   , //GMII输出数据
+    output  reg  [7:0]   gmii_txd   , //GMII输出数据
     output  reg          crc_en     , //CRC开始校验使能
     output  reg          crc_clr    , //CRC数据复位信号 
     //自定义
     input                sustain_flag,
-    (*mark_debug = "true"*)input                fifo_rd_valid
+    input                fifo_rd_valid
     );
 
 //parameter define

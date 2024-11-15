@@ -39,7 +39,7 @@ module udp_tx(
     output  reg          crc_clr    , //CRC数据复位信号 
     //自定义
     input                sustain_flag,
-    (*mark_debug = "true"*)input                fifo_rd_valid
+    input                fifo_rd_valid
     );
 
 //parameter define

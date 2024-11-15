@@ -50,9 +50,9 @@ always @(posedge rd_clk or negedge rst_n) begin
     if(!rst_n)
         fifo_rd_en <= 1'b0;
     else if(!rd_rst_busy) begin
-            if(!empty && !almost_empty)
+            if(!empty)
                 fifo_rd_en <= fifo_rd_req_d0;
-            else if(almost_empty)
+            else
                 fifo_rd_en <= 1'b0;
     end
     else

@@ -232,8 +232,7 @@ udp
     .des_ip        (des_ip      ),    
     .tx_done       (udp_tx_done ),        
     .tx_req        (udp_tx_req  ),
-    .sustain_flag  (sustain_flag),
-    .fifo_rd_valid (fifo_rd_valid)           
+    .sustain_flag  (sustain_flag)           
     ); 
 
 //“Ï≤ΩFIFO
