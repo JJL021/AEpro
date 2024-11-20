@@ -16,7 +16,7 @@
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 添加了STOP_FLAG，发送2MB左右后停止发送
+// 
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -31,8 +31,8 @@ module fifo_wr(
     input start_collect_flag,
     input empty,
     input [10:0] wr_data_count,
-    (*mark_debug = "true"*)output reg block_flag,    //256B字节写完标志位
-    (*mark_debug = "true"*)output reg STOP_FLAG
+    (*mark_debug = "true"*)output reg block_flag    //256B字节写完标志位,
+    output STOP_FLAG
     );
     
 //reg define
@@ -40,8 +40,8 @@ reg empty_d0;
 reg empty_d1;
 reg start_collect_flag_d0;
 reg [10:0] wr_data_count_reg;
-(*mark_debug = "true"*)reg [13:0] count_reg1;  //1024*16
-(*mark_debug = "true"*)reg [8:0] count_reg2;
+reg [13:0] count_reg;  //1024*16
+
     
 //*****************************************************
 //** main code
@@ -94,24 +94,16 @@ end
 always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n) begin
         block_flag <= 1'b0;
-        count_reg1 <= 14'b0;
-        STOP_FLAG <=1'b0;
-        count_reg2 <=1'b0;
+        count_reg <= 11'b0;
     end
     else begin
         if(wr_data_count_reg == 11'd128) begin
             block_flag <= 1'b1;
-            count_reg1 <= count_reg1 + 14'b1; 
-            if(count_reg1 == 14'h2800) begin   //1024*10*256B=2560KB=2MB  65.5ms 再乘305，为20s
-                count_reg2 <= count_reg2 + 1'b1;               
-                if(count_reg2 == 9'd205) begin
-                    STOP_FLAG <= 1'b1;
-                end
-                else
-                    STOP_FLAG <= 1'b0;
-            end
+            count_reg <= count_reg + 11'b1; 
+            if(count_reg == 14'h2800)    //1024*10*256B=2560KB=2MB
+               STOP_FLAG <= 1'b0;
             else
-               STOP_FLAG<=1'b0;                  
+                STOP_FLAG<=1'b1;                  
         end
         else 
             block_flag <= 1'b0;

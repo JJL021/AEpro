@@ -3,7 +3,6 @@
 //第五次：TOP无问题（DB15_0为内部引脚）
 //第六次更改：添加了持续发送命令
 //11_14 ：添加了async_fifo
-//11_19:为啥数据量不匹配
 
 module TOP(
 input              sys_clk   ,      //系统时钟
@@ -78,8 +77,7 @@ eth_udp_loop u_eth_udp_loop(
     .sustain_flag   (start_collect_flag),
     .udp_tx_req     (udp_tx_req),
     .fifo_rd_valid  (fifo_rd_valid),
-    .block_flag     (block_flag),
-    .STOP_FLAG      (STOP_FLAG)
+    .block_flag     (block_flag)
 );
 
 // AD_convert u_ad_convert(

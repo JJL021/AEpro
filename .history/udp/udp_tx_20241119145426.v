@@ -38,7 +38,7 @@ module udp_tx(
     (*mark_debug = "true"*)output  reg          crc_en     , //CRC开始校验使能
     output  reg          crc_clr    , //CRC数据复位信号 
     //自定义
-    (*mark_debug = "true"*)input                sustain_flag,
+    (*mark_debug = "true"*input                sustain_flag,
     (*mark_debug = "true"*)input                fifo_rd_valid,
     input                block_flag
     );

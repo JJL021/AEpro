@@ -72,23 +72,14 @@ reg  [15:0]  data_byte_num   ; //数据长度
 reg  [15:0]  data_cnt        ; //有效数据计数    
 reg  [15:0]  rec_byte_num    ;//以太网接收的有效字数 单位:byte 
 reg         STOP_FLAG_d1     ;  //同步STOP_FLAG寄存器
-(*mark_debug = "true"*)reg         STOP_FLAG_d2     ;
+reg         STOP_FLAG_d2     ;
 
 //*****************************************************
 //**                    main code
 //*****************************************************
 //
 //将STOP_FLAG写时钟同步到读时钟
-always @(posedge clk or negedge rst_n) begin
-    if(!rst_n) begin
-        STOP_FLAG_d1 <= 1'b0;
-        STOP_FLAG_d2 <= 1'b0;
-    end
-    else begin
-        STOP_FLAG_d1 <= STOP_FLAG;
-        STOP_FLAG_d2 <= STOP_FLAG_d1;
-    end
-end
+
 //(三段式状态机)同步时序描述状态转移
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n)
@@ -176,7 +167,7 @@ always @(posedge clk or negedge rst_n) begin
         skip_en <= 1'b0;
         error_en <= 1'b0; 
         rec_pkt_done <= 1'b0;
-        if(STOP_FLAG_d2)            //一直检测是否停止
+        if(STOP_FLAG)
             sustain_flag <= 1'b0;
         else;
         case(next_state)

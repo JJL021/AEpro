@@ -72,7 +72,7 @@ reg  [15:0]  data_byte_num   ; //数据长度
 reg  [15:0]  data_cnt        ; //有效数据计数    
 reg  [15:0]  rec_byte_num    ;//以太网接收的有效字数 单位:byte 
 reg         STOP_FLAG_d1     ;  //同步STOP_FLAG寄存器
-(*mark_debug = "true"*)reg         STOP_FLAG_d2     ;
+reg         STOP_FLAG_d2     ;
 
 //*****************************************************
 //**                    main code

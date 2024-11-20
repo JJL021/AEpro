@@ -86,8 +86,7 @@ udp_rx
     .rec_pkt_done    (rec_pkt_done),      
     .rec_en          (rec_en      ),            
     .rec_data        (rec_data    ),          
-    .sustain_flag    (sustain_flag),
-    .STOP_FLAG       (STOP_FLAG   )     
+    .sustain_flag    (sustain_flag)     
     );                                    
 
 //ÒÔÌ«Íø·¢ËÍÄ£¿é

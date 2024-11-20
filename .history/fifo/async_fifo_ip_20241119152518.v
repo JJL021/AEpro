@@ -9,7 +9,7 @@ module async_fifo_ip(
     output [7:0]    fifo_rd_data,
     output          valid,
     output          wr_ack,
-    output          block_flag,
+    output          block_flag
     output          STOP_FLAG
 
 );

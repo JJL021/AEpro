@@ -236,8 +236,7 @@ udp
     .tx_req        (udp_tx_req  ),
     .sustain_flag  (sustain_flag),
     .fifo_rd_valid (fifo_rd_valid),
-    .block_flag    (block_flag   ),
-    .STOP_FLAG     (STOP_FLAG    )           
+    .block_flag    (block_flag)           
     ); 
 
 //“Ï≤ΩFIFO
