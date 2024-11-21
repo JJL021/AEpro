@@ -70,9 +70,9 @@ always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n)
         fifo_wr_en <= 1'b0;
     else if(!wr_rst_busy) begin
-        if(!full && (!almost_full) && start_collect_flag_d1)
+        if(!full && (!almost_full) && start_collect_flag_d0)
             fifo_wr_en <= 1'b1;
-    else if(almost_full || (!start_collect_flag_d1))
+    else if(almost_full || (!start_collect_flag_d0))
          fifo_wr_en <= 1'b0;
     end
     else

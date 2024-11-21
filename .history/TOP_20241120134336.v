@@ -99,7 +99,7 @@ AD9269 u_ad9269(
    .start_collect_flag  (start_collect_flag)
 );
 
-async_fifo_ip u_async_fifo_ip(      
+async_fifo_ip u_async_fifo_ip(      //替代了AD_convert的功能
 
     .rst_n               (rst_n), 
     .wr_clk              (AD_CLK),

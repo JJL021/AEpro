@@ -37,7 +37,6 @@ reg full_d0;
 reg full_d1;
 (*mark_debug = "true"*)reg fifo_rd_req_d0;
 (*mark_debug = "true"*)reg fifo_rd_req_d1;
-(*mark_debug = "true"*)reg fifo_rd_req_d2;
 
  reg block_flag_d0;
  (*mark_debug = "true"*)reg block_flag_d1;
@@ -48,7 +47,6 @@ always @(posedge rd_clk or negedge rst_n) begin
         full_d1 <= 1'b0; 
         fifo_rd_req_d0 <= 1'b0;
         fifo_rd_req_d1 <= 1'b0;
-        fifo_rd_req_d2 <= 1'b0;
         block_flag_d0  <= 1'b0;
         block_flag_d1  <= 1'b0;
     end
@@ -57,7 +55,6 @@ always @(posedge rd_clk or negedge rst_n) begin
         full_d1 <= full_d0;
         fifo_rd_req_d0 <= fifo_rd_req;
         fifo_rd_req_d1 <= fifo_rd_req_d0;  //´¿ÑÓÊ±
-        fifo_rd_req_d2 <= fifo_rd_req_d1;  //´¿ÑÓÊ±
         block_flag_d0 <= block_flag;
         block_flag_d1 <= block_flag_d0;
     end
@@ -68,7 +65,7 @@ always @(posedge rd_clk or negedge rst_n) begin
         fifo_rd_en <= 1'b0;
     else if(!rd_rst_busy) begin
             if(!empty && !almost_empty)
-                fifo_rd_en <= fifo_rd_req;
+                fifo_rd_en <= fifo_rd_req_d0;
             else if(almost_empty || empty) 
                 fifo_rd_en <= 1'b0;
     end

@@ -31,7 +31,7 @@ module fifo_wr(
     input start_collect_flag,
     input empty,
     input [10:0] wr_data_count,
-    (*mark_debug = "true"*)output reg block_flag,    //256B字节写完标志位（开始发送标志位）
+    (*mark_debug = "true"*)output reg block_flag,    //256B字节写完标志位
     (*mark_debug = "true"*)output reg STOP_FLAG
     );
     
@@ -39,7 +39,6 @@ module fifo_wr(
 reg empty_d0;
 reg empty_d1;
 reg start_collect_flag_d0;
-reg start_collect_flag_d1;
 reg [10:0] wr_data_count_reg;
 (*mark_debug = "true"*)reg [13:0] count_reg1;  //1024*16
 (*mark_debug = "true"*)reg [8:0] count_reg2;
@@ -54,14 +53,11 @@ always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n) begin
         empty_d0 <= 1'b0;
         empty_d1 <= 1'b0;
-        start_collect_flag_d0 <= 1'b0;
-        start_collect_flag_d1 <= 1'b0;
     end
     else begin
         empty_d0 <= empty;
         empty_d1 <= empty_d0;
         start_collect_flag_d0 <= start_collect_flag;
-        start_collect_flag_d1 <= start_collect_flag_d0;
     end
 end
 //打开写使能
@@ -70,15 +66,14 @@ always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n)
         fifo_wr_en <= 1'b0;
     else if(!wr_rst_busy) begin
-        if(!full && (!almost_full) && start_collect_flag_d1)
+        if(!full && (!almost_full) && start_collect_flag_d0)
             fifo_wr_en <= 1'b1;
-    else if(almost_full || (!start_collect_flag_d1))
+    else if(almost_full || (!start_collect_flag_d0))
          fifo_wr_en <= 1'b0;
     end
     else
         fifo_wr_en <= 1'b0;
     end
-
 //wire转reg
 always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n) begin
@@ -88,23 +83,20 @@ always @(posedge wr_clk or negedge rst_n) begin
         wr_data_count_reg <= wr_data_count;
 end   
 
-//停止发送标志位 
 always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n) begin
         block_flag <= 1'b0;
         count_reg1 <= 14'b0;
-        count_reg2 <=1'b0;
         STOP_FLAG <=1'b0;
+        count_reg2 <=1'b0;
     end
     else begin
         if(wr_data_count_reg == 11'd128) begin
             block_flag <= 1'b1;
             count_reg1 <= count_reg1 + 14'b1; 
             if(count_reg1 == 14'h2800) begin   //1024*10*256B=2560KB=2MB  65.5ms 再乘305，为20s
-                count_reg1 <= 14'b0;
                 count_reg2 <= count_reg2 + 1'b1;               
                 if(count_reg2 == 9'd205) begin
-                    count_reg2 <= 9'b0;
                     STOP_FLAG <= 1'b1;
                 end
                 else
@@ -113,10 +105,8 @@ always @(posedge wr_clk or negedge rst_n) begin
             else
                STOP_FLAG<=1'b0;                  
         end
-        else begin
+        else 
             block_flag <= 1'b0;
-        end
-            
     end
         
 

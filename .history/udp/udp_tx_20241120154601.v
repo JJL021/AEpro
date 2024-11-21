@@ -429,7 +429,7 @@ always @(posedge clk or negedge rst_n) begin
                     gmii_txd <= ip_head[cnt][23:16];
                 else if(tx_bit_sel == 3'd2) begin
                     gmii_txd <= ip_head[cnt][15:8];
-                    if(cnt == 5'd6) begin                       //由5‘d6改为5，再提前一点
+                    if(cnt == 5'd5) begin                       //由5‘d6改为5，再提前一点
                         //提前读请求数据，等待数据有效时发送
                         tx_req <= 1'b1;                     
                     end

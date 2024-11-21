@@ -26,9 +26,7 @@ wire [10:0]wr_data_count;
 wire [9:0]rd_data_count;
 wire wr_rst_busy;
 wire rd_rst_busy;
-// wire [15:0]    fifo_wr_data_inv;
 
-// assign fifo_wr_data_inv = {fifo_wr_data[7:0],fifo_wr_data[15:8]};  //交换高低字节，得到正确读出顺序
 
 async_fifo u_async_fifo (
   .rst(~rst_n),                      // input wire rst
@@ -76,14 +74,5 @@ fifo_rd u_fifo_rd (
     .fifo_rd_req(fifo_rd_req),
     .block_flag(block_flag)
 );
-
-// always @(posedge wr_clk or negedge rst_n) begin
-//     if(!rst_n) begin
-
-//     end
-//     else begin
-        
-//     end
-// end
 
 endmodule

@@ -82,6 +82,16 @@ eth_udp_loop u_eth_udp_loop(
     .STOP_FLAG      (STOP_FLAG)
 );
 
+// AD_convert u_ad_convert(
+
+//     .clk     (sys_clk), 
+//     .rst     (sys_rst_n),
+//     .din     (DATA_A), 
+//     .dout    (my_send)
+
+// );
+
+
 AD9269 u_ad9269(
 
    . AD_CLK             (AD_CLK),
@@ -99,7 +109,7 @@ AD9269 u_ad9269(
    .start_collect_flag  (start_collect_flag)
 );
 
-async_fifo_ip u_async_fifo_ip(      
+async_fifo_ip u_async_fifo_ip(      //替代了AD_convert的功能
 
     .rst_n               (rst_n), 
     .wr_clk              (AD_CLK),

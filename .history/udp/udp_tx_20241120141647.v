@@ -18,8 +18,6 @@
 // Descriptions:        The original version
 //二次开发:
 //将tx_data_num由input改为内部，将发送数据部分的判断改大
-//343行 原来if((trig_tx_en || my_start_en_d1) && sustain_flag) 中去掉trig_tx_en，解决第一包数据有重复的问题
-//再提前发送tx_req
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
 
@@ -342,7 +340,7 @@ always @(posedge clk or negedge rst_n) begin
         tx_done_t <= 1'b0;
         case(next_state)
             st_idle     : begin
-                if(my_start_en_d1 && sustain_flag) begin   //接受完一包数据或写入256B字节时启动发送
+                if((trig_tx_en || my_start_en_d1) && sustain_flag) begin   //接受完一包数据或写入256B字节时启动发送
                     skip_en <= 1'b1; 
                     //版本号：4 首部长度：5(单位:32bit,20byte/4=5)
                     ip_head[0] <= {8'h45,8'h00,total_num};   
@@ -429,7 +427,7 @@ always @(posedge clk or negedge rst_n) begin
                     gmii_txd <= ip_head[cnt][23:16];
                 else if(tx_bit_sel == 3'd2) begin
                     gmii_txd <= ip_head[cnt][15:8];
-                    if(cnt == 5'd6) begin                       //由5‘d6改为5，再提前一点
+                    if(cnt == 5'd6) begin
                         //提前读请求数据，等待数据有效时发送
                         tx_req <= 1'b1;                     
                     end
