@@ -17,7 +17,6 @@
 // Revision 0.01 - File Created
 // Additional Comments:
 // 添加了STOP_FLAG，发送2MB左右后停止发送
-//75行添加了|| STOP_FLAG，使写完256B后立即停止写fifo，这样再发aa不会先读出上次的残留再读出0001了
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -73,7 +72,7 @@ always @(posedge wr_clk or negedge rst_n) begin
     else if(!wr_rst_busy) begin
         if(!full && (!almost_full) && start_collect_flag_d1)
             fifo_wr_en <= 1'b1;
-        else if(almost_full || (!start_collect_flag_d1) ) //|| STOP_FLAG
+        else if(almost_full || (!start_collect_flag_d1) || STOP_FLAG)
          fifo_wr_en <= 1'b0;
     end
     else
@@ -104,7 +103,7 @@ always @(posedge wr_clk or negedge rst_n) begin
             if(count_reg1 == 14'h2800) begin   //1024*10*256B=2560KB=2MB  65.5ms 再乘305，为20s
                 count_reg1 <= 14'b0;
                 count_reg2 <= count_reg2 + 1'b1;               
-                if(count_reg2 == 9'd51) begin   //205：512MB  102：256MB   51:128MB
+                if(count_reg2 == 9'd205) begin
                     count_reg2 <= 9'b0;
                     STOP_FLAG <= 1'b1;
                 end

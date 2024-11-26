@@ -104,7 +104,7 @@ always @(posedge wr_clk or negedge rst_n) begin
             if(count_reg1 == 14'h2800) begin   //1024*10*256B=2560KB=2MB  65.5ms ÔÙ³Ë305£¬Îª20s
                 count_reg1 <= 14'b0;
                 count_reg2 <= count_reg2 + 1'b1;               
-                if(count_reg2 == 9'd51) begin   //205£º512MB  102£º256MB   51:128MB
+                if(count_reg2 == 9'd205) begin
                     count_reg2 <= 9'b0;
                     STOP_FLAG <= 1'b1;
                 end
