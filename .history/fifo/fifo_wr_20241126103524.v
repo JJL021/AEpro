@@ -20,7 +20,7 @@
 //75行添加了|| STOP_FLAG，使写完256B后立即停止写fifo，这样再发aa不会先读出上次的残留再读出0001了
 //////////////////////////////////////////////////////////////////////////////////
 
-
+localparam count_reg1_max = 14'h2800;
 
 module fifo_wr(
 
@@ -46,11 +46,6 @@ reg [10:0] wr_data_count_reg;
 (*mark_debug = "true"*)reg [13:0] count_reg1;  //1024*16
 (*mark_debug = "true"*)reg [8:0] count_reg2;
     
-
-// localparam define
-localparam count_reg1_max = 14'h2800;
-localparam count_reg2_max = 9'd51;
-
 //*****************************************************
 //** main code
 //*****************************************************
@@ -96,60 +91,55 @@ always @(posedge wr_clk or negedge rst_n) begin
 end   
 
 //停止发送标志位 
-reg reg1_max_reached;
-reg [13:0] count_reg1_last;  // 保存上一个时钟周期的 count_reg1 值
-
 always @(posedge wr_clk or negedge rst_n) begin
-    if (!rst_n) begin
+    if(!rst_n) begin
         block_flag <= 1'b0;
         count_reg1 <= 14'b0;
-        reg1_max_reached <= 1'b0;
-        count_reg1_last <= 14'b0;
+        STOP_FLAG <=1'b0;
     end
     else begin
-        count_reg1_last <= count_reg1;  // 更新上一周期值
-
-        if (wr_data_count_reg == 11'd128) begin
+        if(wr_data_count_reg == 11'd128) begin
             block_flag <= 1'b1;
-            if (count_reg1 == count_reg1_max - 14'h1) begin
+            if(count_reg1 == 14'h2800) begin   //1024*10*256B=2560KB=2MB  65.5ms 再乘305，为20s
                 count_reg1 <= 14'b0;
-                reg1_max_reached <= 1'b1;  // 达到最大值时设置锁定标志
+                             
+                if(count_reg2 == 9'd51) begin   //205：512MB  102：256MB   51:128MB
+                    count_reg2 <= 9'b0;
+                    STOP_FLAG <= 1'b1;
+                end
+                else
+                    STOP_FLAG <= 1'b0;
             end
             else begin
-                count_reg1 <= count_reg1 + 14'b1;
-                reg1_max_reached <= 1'b0;  // 清除锁定标志
-            end
+                count_reg1 <= count_reg1 + 14'b1; 
+                STOP_FLAG<=1'b0;   
+               end               
         end
         else begin
             block_flag <= 1'b0;
-        end
+            STOP_FLAG<=1'b0; 
+        end       
     end
 end
 
 always @(posedge wr_clk or negedge rst_n) begin
-    if (!rst_n) begin
+    if(!rst_n) begin
         count_reg2 <= 9'b0;
     end
-    // 检测 count_reg1 从非最大值变为最大值的过渡
-    else if ((count_reg1_last != count_reg1_max - 14'h1) && (count_reg1 == count_reg1_max - 14'h1)) begin
-        count_reg2 <= count_reg2 + 1'b1;
-    end
-    else if (count_reg2 == (count_reg2_max - 9'd1) && count_reg1 == (count_reg1_max - 14'h1)) begin
+    else if(count_reg2  == (9'd51 -9'd1) && count_reg1 == (14'h2800-14'h1))
         count_reg2 <= 9'b0;
-    end
-    else begin
+    else if(count_reg1 == (14'h2800-14'h1))
+        count_reg2 <= count_reg2 + 1'b1; 
+    else
         count_reg2 <= count_reg2;
-    end
 end
-//205：512MB  102：256MB   51:128MB
 always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n) begin
         STOP_FLAG <= 1'b0;
     end
-    else if(count_reg2  == (count_reg2_max -9'd1) && count_reg1 == (count_reg1_max-14'h1))begin
-        STOP_FLAG <= 1'b1;
+    else if()begin
+        
     end
-    else
-        STOP_FLAG <= 1'b0;
+
 end
 endmodule
