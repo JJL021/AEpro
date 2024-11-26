@@ -64,9 +64,7 @@ fifo_wr u_fifo_wr (
     .block_flag(block_flag),
     .STOP_FLAG(STOP_FLAG),
     //调试fifo用的接口
-    .valid(valid),
-    .fifo_rd_en(fifo_rd_en),
-    .rd_data_count(rd_data_count)
+    
 );
 //例化读FIFO 模块
 fifo_rd u_fifo_rd (
@@ -78,9 +76,7 @@ fifo_rd u_fifo_rd (
     .full (full), // fifo 满信号
     .empty(empty),
     .fifo_rd_req(fifo_rd_req),
-    .block_flag(block_flag),
-    //调试用
-    .rd_data_count(rd_data_count)
+    .block_flag(block_flag)
 );
 
 // always @(posedge wr_clk or negedge rst_n) begin

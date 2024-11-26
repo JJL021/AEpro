@@ -78,9 +78,7 @@ fifo_rd u_fifo_rd (
     .full (full), // fifo ÂúĞÅºÅ
     .empty(empty),
     .fifo_rd_req(fifo_rd_req),
-    .block_flag(block_flag),
-    //µ÷ÊÔÓÃ
-    .rd_data_count(rd_data_count)
+    .block_flag(block_flag)
 );
 
 // always @(posedge wr_clk or negedge rst_n) begin

@@ -30,7 +30,7 @@ module fifo_rd(
     input fifo_rd_req,
     input block_flag,
     //µ÷ÊÔÓÃ
-    (*mark_debug = "true"*)input [9:0] rd_data_count
+    .rd_data_count(rd_data_count)
     
     );
 

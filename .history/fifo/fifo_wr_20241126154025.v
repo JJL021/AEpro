@@ -45,6 +45,7 @@ reg empty_d0;
 reg empty_d1;
 reg start_collect_flag_d0;
 (*mark_debug = "true"*)reg start_collect_flag_d1;
+reg [10:0] wr_data_count_reg;
 (*mark_debug = "true"*)reg [13:0] count_reg1;  //1024*16
 (*mark_debug = "true"*)reg [8:0] count_reg2;
 reg [10:0] rd_data_count_d1;
@@ -114,6 +115,7 @@ always @(posedge wr_clk or negedge rst_n) begin
 //wireתreg
 always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n) begin
+        wr_data_count_reg <= 11'b0;
         wr_data_count_reg_last <= 11'b0;
         trend <= 1'b0;
     end

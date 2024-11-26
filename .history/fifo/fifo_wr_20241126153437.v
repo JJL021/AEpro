@@ -45,6 +45,7 @@ reg empty_d0;
 reg empty_d1;
 reg start_collect_flag_d0;
 (*mark_debug = "true"*)reg start_collect_flag_d1;
+reg [10:0] wr_data_count_reg;
 (*mark_debug = "true"*)reg [13:0] count_reg1;  //1024*16
 (*mark_debug = "true"*)reg [8:0] count_reg2;
 reg [10:0] rd_data_count_d1;
@@ -57,7 +58,7 @@ reg valid_d1;
 (*mark_debug = "true"*)reg valid_d2;
 
 reg [10:0] wr_data_count_reg_last;
-(*mark_debug = "true"*)reg trend;    
+reg trend;    
 
 // localparam define
 localparam count_reg1_max = 14'h2800;
@@ -114,17 +115,17 @@ always @(posedge wr_clk or negedge rst_n) begin
 //wire转reg
 always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n) begin
+        wr_data_count_reg <= 11'b0;
         wr_data_count_reg_last <= 11'b0;
         trend <= 1'b0;
     end
-    else begin
+    else
         // 比较当前 wr_data_count 和上一时刻值
         if (wr_data_count > wr_data_count_reg_last)
             trend <= 1'b1; // 数据量增加
         else if (wr_data_count < wr_data_count_reg_last)
             trend <= 1'b0; // 数据量减少
-        wr_data_count_reg_last <= wr_data_count;
-    end
+        wr_data_count_reg <= wr_data_count;
 end   
 
 //停止发送标志位 
@@ -142,7 +143,7 @@ always @(posedge wr_clk or negedge rst_n) begin
     else begin
         count_reg1_last <= count_reg1;  // 更新上一周期值
 
-        if (wr_data_count_reg_last == 11'd128 && trend) begin  //wr_cnt增加的时候达到128而不考虑减
+        if (wr_data_count_reg == 11'd128) begin
             block_flag <= 1'b1;
             if (count_reg1 == count_reg1_max - 14'h1) begin
                 count_reg1 <= 14'b0;

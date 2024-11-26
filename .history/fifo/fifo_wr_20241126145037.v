@@ -45,19 +45,18 @@ reg empty_d0;
 reg empty_d1;
 reg start_collect_flag_d0;
 (*mark_debug = "true"*)reg start_collect_flag_d1;
+reg [10:0] wr_data_count_reg;
 (*mark_debug = "true"*)reg [13:0] count_reg1;  //1024*16
 (*mark_debug = "true"*)reg [8:0] count_reg2;
 reg [10:0] rd_data_count_d1;
-(*mark_debug = "true"*)reg [10:0] rd_data_count_d2;
+reg [10:0] rd_data_count_d2;
 
 //调试用
 reg fifo_rd_en_d1;
 (*mark_debug = "true"*)reg fifo_rd_en_d2;
 reg valid_d1;
 (*mark_debug = "true"*)reg valid_d2;
-
-reg [10:0] wr_data_count_reg_last;
-(*mark_debug = "true"*)reg trend;    
+    
 
 // localparam define
 localparam count_reg1_max = 14'h2800;
@@ -92,8 +91,6 @@ always @(posedge wr_clk or negedge rst_n) begin
         fifo_rd_en_d2 <= fifo_rd_en_d1;
         valid_d1 <= valid;
         valid_d2 <= valid_d1;
-        rd_data_count_d1 <= rd_data_count;
-        rd_data_count_d2 <= rd_data_count_d1;
     end
 end
 //打开写使能
@@ -114,17 +111,10 @@ always @(posedge wr_clk or negedge rst_n) begin
 //wire转reg
 always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n) begin
-        wr_data_count_reg_last <= 11'b0;
-        trend <= 1'b0;
+        wr_data_count_reg <= 11'b0;
     end
-    else begin
-        // 比较当前 wr_data_count 和上一时刻值
-        if (wr_data_count > wr_data_count_reg_last)
-            trend <= 1'b1; // 数据量增加
-        else if (wr_data_count < wr_data_count_reg_last)
-            trend <= 1'b0; // 数据量减少
-        wr_data_count_reg_last <= wr_data_count;
-    end
+    else
+        wr_data_count_reg <= wr_data_count;
 end   
 
 //停止发送标志位 
@@ -137,12 +127,11 @@ always @(posedge wr_clk or negedge rst_n) begin
         count_reg1 <= 14'b0;
         reg1_max_reached <= 1'b0;
         count_reg1_last <= 14'b0;
-        
     end
     else begin
         count_reg1_last <= count_reg1;  // 更新上一周期值
 
-        if (wr_data_count_reg_last == 11'd128 && trend) begin  //wr_cnt增加的时候达到128而不考虑减
+        if (wr_data_count_reg == 11'd128) begin
             block_flag <= 1'b1;
             if (count_reg1 == count_reg1_max - 14'h1) begin
                 count_reg1 <= 14'b0;
