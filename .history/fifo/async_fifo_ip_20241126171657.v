@@ -33,7 +33,7 @@ assign new_rst_n = rst_n && !STOP_FLAG;
 // assign fifo_wr_data_inv = {fifo_wr_data[7:0],fifo_wr_data[15:8]};  //交换高低字节，得到正确读出顺序
 
 async_fifo u_async_fifo (
-  .rst(~new_rst_n),                      // input wire rst
+  .rst(~rst_n),                      // input wire rst
   .wr_clk(wr_clk),                // input wire wr_clk
   .rd_clk(rd_clk),                // input wire rd_clk
   .din(fifo_wr_data),                      // input wire [15 : 0] din
@@ -73,7 +73,7 @@ fifo_wr u_fifo_wr (
 //例化读FIFO 模块
 fifo_rd u_fifo_rd (
     .rd_clk (rd_clk ), // 读时钟
-    .rst_n (new_rst_n ), // 复位信号
+    .rst_n (rst_n ), // 复位信号
     .rd_rst_busy (rd_rst_busy ), // 读复位忙信号
     .fifo_rd_en (fifo_rd_en ), // fifo 读请求
     .almost_empty (almost_empty), // fifo 将空信号

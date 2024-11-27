@@ -48,7 +48,7 @@ wire block_flag;
 wire STOP_FLAG;
 
 
-assign rst_n = sys_rst_n & locked ;  // 综合复位信号
+assign rst_n = sys_rst_n & locked;  // 综合复位信号
 
 //例化
 //MMCM/PLL

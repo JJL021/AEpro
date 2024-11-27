@@ -73,7 +73,7 @@ fifo_wr u_fifo_wr (
 //例化读FIFO 模块
 fifo_rd u_fifo_rd (
     .rd_clk (rd_clk ), // 读时钟
-    .rst_n (new_rst_n ), // 复位信号
+    .rst_n (rst_n ), // 复位信号
     .rd_rst_busy (rd_rst_busy ), // 读复位忙信号
     .fifo_rd_en (fifo_rd_en ), // fifo 读请求
     .almost_empty (almost_empty), // fifo 将空信号
