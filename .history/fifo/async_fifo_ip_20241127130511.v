@@ -64,7 +64,7 @@ fifo_wr u_fifo_wr (
     .empty(empty),
     .wr_data_count(wr_data_count),
     .block_flag(block_flag),
-    .STOP_FLAG_d1(STOP_FLAG),
+    .STOP_FLAG(STOP_FLAG),
     //调试fifo用的接口
     .valid(valid),
     .fifo_rd_en(fifo_rd_en),

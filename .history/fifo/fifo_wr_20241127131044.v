@@ -34,7 +34,7 @@ module fifo_wr(
     input empty,
     (*mark_debug = "true"*)input [10:0] wr_data_count,
     (*mark_debug = "true"*)output reg block_flag,    //256B字节写完标志位（开始发送标志位）
-    (*mark_debug = "true"*)output reg STOP_FLAG_d1,
+    (*mark_debug = "true"*)output reg STOP_FLAG,
     input fifo_rd_en,  //调试用
     input valid,
     input [10:0] rd_data_count
@@ -44,7 +44,7 @@ module fifo_wr(
 reg empty_d0;
 reg empty_d1;
 reg start_collect_flag_d0;
-reg STOP_FLAG;
+
 
 
 
@@ -61,7 +61,8 @@ reg valid_d1;
 (*mark_debug = "true"*)reg valid_d2;
 
 reg [10:0] wr_data_count_reg_last;
-(*mark_debug = "true"*)reg trend;    
+(*mark_debug = "true"*)reg trend;   
+reg STOP_FLAG; 
 
 // localparam define
 localparam count_reg1_max = 14'h2800;
@@ -71,7 +72,7 @@ localparam count_reg2_max = 9'd51;
 //** main code
 //*****************************************************
 
-
+/
 //对empty 打两拍同步到写时钟域下
 always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n) begin
@@ -79,6 +80,7 @@ always @(posedge wr_clk or negedge rst_n) begin
         empty_d1 <= 1'b0;
         start_collect_flag_d0 <= 1'b0;
         start_collect_flag_d1 <= 1'b0;
+
         //调试用
         fifo_rd_en_d1 <=1'b0;
         fifo_rd_en_d2 <=1'b0;
@@ -86,7 +88,6 @@ always @(posedge wr_clk or negedge rst_n) begin
         valid_d2 <= 1'b0;
         rd_data_count_d1 <=11'b0;
         rd_data_count_d2 <= 11'b0;
-        STOP_FLAG_d1 <= 1'b0;
     end
     else begin
         empty_d0 <= empty;
@@ -99,13 +100,12 @@ always @(posedge wr_clk or negedge rst_n) begin
         valid_d2 <= valid_d1;
         rd_data_count_d1 <= rd_data_count;
         rd_data_count_d2 <= rd_data_count_d1;
-        STOP_FLAG_d1 <= STOP_FLAG;
     end
 end
 //打开写使能
 //对fifo_wr_en 赋值，当FIFO 不是将满且收到采集命令时写，写满或收到停止采集命令时停止写
-always @(posedge wr_clk or negedge rst_n or posedge STOP_FLAG_d1) begin
-    if(!rst_n || STOP_FLAG_d1)
+always @(posedge wr_clk or negedge rst_n) begin
+    if(!rst_n)
         fifo_wr_en <= 1'b0;
     else if(!wr_rst_busy) begin
         if(!full && (!almost_full) && start_collect_flag_d1)
@@ -118,8 +118,8 @@ always @(posedge wr_clk or negedge rst_n or posedge STOP_FLAG_d1) begin
     end
 
 //wire转reg
-always @(posedge wr_clk or negedge rst_n or posedge STOP_FLAG_d1) begin
-    if(!rst_n || STOP_FLAG_d1) begin
+always @(posedge wr_clk or negedge rst_n) begin
+    if(!rst_n) begin
         wr_data_count_reg_last <= 11'b0;
         trend <= 1'b0;
     end
@@ -137,8 +137,8 @@ end
 reg reg1_max_reached;
 reg [13:0] count_reg1_last;  // 保存上一个时钟周期的 count_reg1 值
 
-always @(posedge wr_clk or negedge rst_n or posedge STOP_FLAG_d1) begin
-    if (!rst_n || STOP_FLAG_d1) begin
+always @(posedge wr_clk or negedge rst_n) begin
+    if (!rst_n) begin
         block_flag <= 1'b0;
         count_reg1 <= 14'b0;
         reg1_max_reached <= 1'b0;
@@ -165,8 +165,8 @@ always @(posedge wr_clk or negedge rst_n or posedge STOP_FLAG_d1) begin
     end
 end
 
-always @(posedge wr_clk or negedge rst_n or posedge STOP_FLAG_d1) begin
-    if (!rst_n || STOP_FLAG_d1) begin
+always @(posedge wr_clk or negedge rst_n) begin
+    if (!rst_n) begin
         count_reg2 <= 9'b0;
     end
     // 检测 count_reg1 从非最大值变为最大值的过渡

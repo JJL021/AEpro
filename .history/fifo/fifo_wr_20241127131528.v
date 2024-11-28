@@ -34,7 +34,7 @@ module fifo_wr(
     input empty,
     (*mark_debug = "true"*)input [10:0] wr_data_count,
     (*mark_debug = "true"*)output reg block_flag,    //256B字节写完标志位（开始发送标志位）
-    (*mark_debug = "true"*)output reg STOP_FLAG_d1,
+    (*mark_debug = "true"*)output reg STOP_FLAG,
     input fifo_rd_en,  //调试用
     input valid,
     input [10:0] rd_data_count
@@ -44,8 +44,8 @@ module fifo_wr(
 reg empty_d0;
 reg empty_d1;
 reg start_collect_flag_d0;
-reg STOP_FLAG;
 
+reg STOP_FLAG_d1;
 
 
 (*mark_debug = "true"*)reg start_collect_flag_d1;

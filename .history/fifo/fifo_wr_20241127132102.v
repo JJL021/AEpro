@@ -73,8 +73,8 @@ localparam count_reg2_max = 9'd51;
 
 
 //对empty 打两拍同步到写时钟域下
-always @(posedge wr_clk or negedge rst_n) begin
-    if(!rst_n) begin
+always @(posedge wr_clk or negedge rst_n or posedge STOP_FLAG_d1) begin
+    if(!rst_n || STOP_FLAG_d1) begin
         empty_d0 <= 1'b0;
         empty_d1 <= 1'b0;
         start_collect_flag_d0 <= 1'b0;

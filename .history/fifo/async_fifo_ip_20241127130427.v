@@ -54,17 +54,17 @@ async_fifo u_async_fifo (
 
 //例化写FIFO 模块
 fifo_wr u_fifo_wr (
-    .wr_clk (wr_clk ),              // 写时钟
-    .rst_n (rst_n ),                // 复位信号
-    .wr_rst_busy (wr_rst_busy ),    // 写复位忙信号
-    .fifo_wr_en (fifo_wr_en ),      // fifo 写请求
-    .almost_full (almost_full ),    // fifo 将满信号
+    .wr_clk (wr_clk ), // 写时钟
+    .rst_n (rst_n ), // 复位信号
+    .wr_rst_busy (wr_rst_busy ), // 写复位忙信号
+    .fifo_wr_en (fifo_wr_en ), // fifo 写请求
+    .almost_full (almost_full ), // fifo 将满信号
     .full(full),
     .start_collect_flag(start_collect_flag),
     .empty(empty),
     .wr_data_count(wr_data_count),
     .block_flag(block_flag),
-    .STOP_FLAG_d1(STOP_FLAG),
+    .STOP_FLAG(STOP_FLAG),
     //调试fifo用的接口
     .valid(valid),
     .fifo_rd_en(fifo_rd_en),
@@ -72,12 +72,12 @@ fifo_wr u_fifo_wr (
 );
 //例化读FIFO 模块
 fifo_rd u_fifo_rd (
-    .rd_clk (rd_clk ),               // 读时钟
-    .rst_n (rst_n ),                 // 复位信号
-    .rd_rst_busy (rd_rst_busy ),     // 读复位忙信号
-    .fifo_rd_en (fifo_rd_en ),       // fifo 读请求
-    .almost_empty (almost_empty),    // fifo 将空信号
-    .full (full),                    // fifo 满信号
+    .rd_clk (rd_clk ), // 读时钟
+    .rst_n (rst_n ), // 复位信号
+    .rd_rst_busy (rd_rst_busy ), // 读复位忙信号
+    .fifo_rd_en (fifo_rd_en ), // fifo 读请求
+    .almost_empty (almost_empty), // fifo 将空信号
+    .full (full), // fifo 满信号
     .empty(empty),
     .fifo_rd_req(fifo_rd_req),
     .block_flag(block_flag),
