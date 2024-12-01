@@ -41,7 +41,7 @@ module fifo_wr(
     );
 
 //wire define
-(*mark_debug = "true"*)wire delay_stop_flag;
+    (*mark_debug = "true"*)wire delay_stop_flag;
 
 //reg define
 reg empty_d0;

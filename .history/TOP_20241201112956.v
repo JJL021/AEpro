@@ -49,7 +49,7 @@ wire block_flag;
 wire STOP_FLAG;
 (*mark_debug = "true"*)wire STOP_FLAG_pulse_extender;
 
-assign rst_n = sys_rst_n & locked & (~STOP_FLAG_pulse_extender);  // 综合复位信号 必须是与 因为有~
+assign rst_n = sys_rst_n & locked | (~STOP_FLAG_pulse_extender);  // 综合复位信号
 
 //例化
 //MMCM/PLL
@@ -119,7 +119,7 @@ async_fifo_ip u_async_fifo_ip(
 
 pulse_extender u_pulse_extender(
     .clk        (AD_CLK),
-    .rst_n      (sys_rst_n),
+    .rst_n      (rst_n),
     .pulse_in   (STOP_FLAG),
     .pulse_out  (STOP_FLAG_pulse_extender)
 

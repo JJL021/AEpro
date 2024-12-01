@@ -119,7 +119,7 @@ async_fifo_ip u_async_fifo_ip(
 
 pulse_extender u_pulse_extender(
     .clk        (AD_CLK),
-    .rst_n      (sys_rst_n),
+    .rst_n      (rst_n),
     .pulse_in   (STOP_FLAG),
     .pulse_out  (STOP_FLAG_pulse_extender)
 
