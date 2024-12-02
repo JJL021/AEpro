@@ -93,7 +93,7 @@ eth_udp_loop u_eth_udp_loop(
 AD9269 u_ad9269(
 
    . AD_CLK             (AD_CLK),
-   . SYS_RST            (rst_n),
+   . SYS_RST            (sys_rst_n),
    . OTR                (OTR),
    //. DCO              (DCO),
    //. DB15_0           (DB15_0),

@@ -41,7 +41,7 @@ output              uart_txd
 //wire
 (*mark_debug = "true"*)wire [15:0]  DATA_A;
 wire [15:0]  DATA_B;
-wire [7:0]   my_send;
+(*mark_debug = "true"*)wire [7:0]   my_send;
 wire        clk_200m;
 
 wire locked;
@@ -72,7 +72,7 @@ clk_wiz_0 u_clk_wiz_0
 eth_udp_loop u_eth_udp_loop(
 
     .clk_200m       (clk_200m ), 
-    .sys_rst_n      (rst_n), 
+    .sys_rst_n      (sys_rst_n), 
     
     .eth_rxc        (eth_rxc   ), 
     .eth_rx_ctl     (eth_rx_ctl), 
@@ -93,7 +93,7 @@ eth_udp_loop u_eth_udp_loop(
 AD9269 u_ad9269(
 
    . AD_CLK             (AD_CLK),
-   . SYS_RST            (rst_n),
+   . SYS_RST            (sys_rst_n),
    . OTR                (OTR),
    //. DCO              (DCO),
    //. DB15_0           (DB15_0),
@@ -134,11 +134,11 @@ pulse_extender u_pulse_extender(
 
 uart_loopback u_uart_loopback(
 
-    .sys_clk          (AD_CLK)      ,   
-    .sys_rst_n        (sys_rst_n)   ,   
-    .uart_rxd         (uart_rxd)    ,   
-    .uart_txd         (uart_txd)    ,   
-    .my_uart_send     ()            ,
+    .sys_clk          (AD_CLK)          ,   
+    .sys_rst_n        (sys_rst_n)          ,   
+    .uart_rxd         ()          ,   
+    .uart_txd         ()          ,   
+    .my_uart_send     ()          ,
     .my_uart_tx_en    (block_flag)
 
 
