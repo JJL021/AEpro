@@ -10,7 +10,6 @@ module async_fifo_ip(
     output          valid,
     output          wr_ack,
     output          block_flag,
-    output          delay_stop_flag,
     output          STOP_FLAG_d1
 
 );

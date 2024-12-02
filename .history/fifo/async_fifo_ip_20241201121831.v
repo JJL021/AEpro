@@ -10,7 +10,6 @@ module async_fifo_ip(
     output          valid,
     output          wr_ack,
     output          block_flag,
-    output          delay_stop_flag,
     output          STOP_FLAG_d1
 
 );
@@ -69,7 +68,7 @@ fifo_wr u_fifo_wr (
     //调试fifo用的接口
     .valid(valid),
     .fifo_rd_en(fifo_rd_en),
-    .delay_stop_flag(delay_stop_flag),
+    .delay_stop_flag(delay_stop_flag)
     .rd_data_count(rd_data_count)
 );
 //例化读FIFO 模块

@@ -10,7 +10,6 @@ module async_fifo_ip(
     output          valid,
     output          wr_ack,
     output          block_flag,
-    output          delay_stop_flag,
     output          STOP_FLAG_d1
 
 );
@@ -28,6 +27,7 @@ wire [9:0]rd_data_count;
 wire wr_rst_busy;
 wire rd_rst_busy;
 wire new_rst_n;
+wire delay_stop_flag;
 assign new_rst_n = rst_n && !STOP_FLAG_d1;
 // wire [15:0]    fifo_wr_data_inv;
 

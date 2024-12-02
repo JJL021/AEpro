@@ -48,7 +48,7 @@ wire fifo_wc_ack;
 wire block_flag;
 wire STOP_FLAG;
 (*mark_debug = "true"*)wire STOP_FLAG_pulse_extender;
-wire delay_stop_flag;
+
 assign rst_n = sys_rst_n & locked & (~STOP_FLAG_pulse_extender);  // 综合复位信号 必须是与 因为有~
 
 //例化
@@ -113,7 +113,7 @@ async_fifo_ip u_async_fifo_ip(
     .wr_ack              (fifo_wc_ack),
     .valid               (fifo_rd_valid),
     .block_flag          (block_flag),
-    .delay_stop_flag     (delay_stop_flag),
+    .delay_stop_flag     (delay_stop_flag)
     .STOP_FLAG_d1           (STOP_FLAG)
 
 );
@@ -121,7 +121,7 @@ async_fifo_ip u_async_fifo_ip(
 pulse_extender u_pulse_extender(
     .clk        (AD_CLK),
     .rst_n      (sys_rst_n),
-    .pulse_in   (delay_stop_flag),//防止把fifo_wr里的delay_stop_flag给复位了
+    .pulse_in   (STOP_FLAG),
     .pulse_out  (STOP_FLAG_pulse_extender)
 
 );

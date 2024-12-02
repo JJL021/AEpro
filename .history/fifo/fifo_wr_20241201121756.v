@@ -37,8 +37,8 @@ module fifo_wr(
     (*mark_debug = "true"*)output reg STOP_FLAG_d1,
     input fifo_rd_en,  //调试用
     input valid,
-    input [10:0] rd_data_count,
-    (*mark_debug = "true"*)output delay_stop_flag
+    input [10:0] rd_data_count
+    (*mark_debug = "true"*)output delay_stop_flag;
     );
 
 //wire define
@@ -126,7 +126,7 @@ always @(posedge wr_clk or negedge rst_n) begin
         // 比较当前 wr_data_count 和上一时刻值
         if (wr_data_count > wr_data_count_reg_last)
             trend <= 1'b1; // 数据量增加
-        else //if (wr_data_count < wr_data_count_reg_last)
+        else if (wr_data_count < wr_data_count_reg_last)
             trend <= 1'b0; // 数据量减少
         wr_data_count_reg_last <= wr_data_count;
     end
