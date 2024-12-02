@@ -39,8 +39,7 @@ module eth_udp_loop(
     output              udp_tx_req,
     // input               fifo_rd_valid,
     input               block_flag,
-    input               STOP_FLAG,
-    input               cnt2_is16_flag
+    input               STOP_FLAG
     );
 
 //parameter define
@@ -238,8 +237,7 @@ udp
     .sustain_flag  (sustain_flag),
     // .fifo_rd_valid (fifo_rd_valid),
     .block_flag    (block_flag   ),
-    .STOP_FLAG     (STOP_FLAG    ),
-    .cnt2_is16_flag(cnt2_is16_flag)           
+    .STOP_FLAG     (STOP_FLAG    )           
     ); 
 
 //“Ï≤ΩFIFO

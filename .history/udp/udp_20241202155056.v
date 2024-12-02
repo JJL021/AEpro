@@ -45,8 +45,7 @@ module udp(
     output               sustain_flag,
     // input                fifo_rd_valid,
     input                block_flag,
-    input                STOP_FLAG,
-    input                cnt2_is16_flag 
+    input                STOP_FLAG 
     );
 
 //parameter define
@@ -117,8 +116,7 @@ udp_tx
     .crc_clr         (crc_clr    ),
     .sustain_flag    (sustain_flag),
     // .fifo_rd_valid   (fifo_rd_valid),
-    .block_flag      (block_flag ),
-    .cnt2_is16_flag  (cnt2_is16_flag)    
+    .block_flag      (block_flag )    
     );                                      
 
 //以太网发送CRC校验模块

@@ -34,7 +34,7 @@ module udp_tx(
     input        [31:0]  crc_data   , //CRC校验数据
     input        [ 7:0]  crc_next   , //CRC下次校验完成数据
     output  reg          tx_done    , //以太网发送完成信号
-    (*mark_debug = "true"*)output  reg          tx_req     , //读数据请求信号
+    output  reg          tx_req     , //读数据请求信号
     (*mark_debug = "true"*)output  reg          gmii_tx_en , //GMII输出数据有效信号
     (*mark_debug = "true"*)output  reg  [7:0]   gmii_txd   , //GMII输出数据
     output  reg          crc_en     , //CRC开始校验使能
@@ -100,11 +100,6 @@ reg          my_skip_en     ;
 
 reg          my_start_en_d0    ; //block_flag打拍寄存器
 reg          my_start_en_d1    ; //block_flag打拍寄存器
-
-//test
-reg         cnt2_is16_flag_d1;
-reg         cnt2_is16_flag_d2;
-(*mark_debug = "true"*)reg         cnt2_is16_flag_d3;
                                     
 //wire define                       
 wire         pos_start_en    ;//开始发送数据上升沿
@@ -117,23 +112,6 @@ wire [15:0]  real_tx_data_num;//实际发送的字节数(以太网最少字节要求)
 assign  pos_start_en = (~start_en_d2) & start_en_d1;
 assign  real_tx_data_num = (tx_data_num >= MIN_DATA_NUM) 
                            ? tx_data_num : MIN_DATA_NUM; 
-                           
-
-//test
-always @(posedge clk or negedge rst_n) begin
-    if(!rst_n) begin      
-        cnt2_is16_flag_d1 <= 1'b0;
-        cnt2_is16_flag_d2 <= 1'b0;
-        cnt2_is16_flag_d3 <= 1'b0;
-    end
-    else begin
-        cnt2_is16_flag_d1 <= cnt2_is16_flag;
-        cnt2_is16_flag_d2 <= cnt2_is16_flag_d1;
-        cnt2_is16_flag_d3 <= cnt2_is16_flag_d2;
-    end
-
-end                    
-                           
                            
 //采tx_start_en的上升沿
 always @(posedge clk or negedge rst_n) begin

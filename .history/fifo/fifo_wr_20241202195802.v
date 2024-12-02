@@ -37,7 +37,7 @@ module fifo_wr(
     output reg STOP_FLAG_d1,
     input fifo_rd_en,  //调试用
     input valid,
-    (*mark_debug = "true"*)input [9:0] rd_data_count,
+    input [10:0] rd_data_count,
     output delay_stop_flag,
     output reg cnt2_is16_flag
     );
@@ -53,8 +53,8 @@ reg STOP_FLAG;
 reg start_collect_flag_d1;
 reg [13:0] count_reg1;  //1024*16
 (*mark_debug = "true"*)reg [8:0] count_reg2;
-reg [9:0] rd_data_count_d1;
-reg [9:0] rd_data_count_d2;
+reg [10:0] rd_data_count_d1;
+reg [10:0] rd_data_count_d2;
 //调试用
 reg fifo_rd_en_d1;
 reg fifo_rd_en_d2;

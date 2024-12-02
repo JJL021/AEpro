@@ -88,8 +88,7 @@ eth_udp_loop u_eth_udp_loop(
     .udp_tx_req     (udp_tx_req),
     // .fifo_rd_valid  (fifo_rd_valid),
     .block_flag     (block_flag),
-    .STOP_FLAG      (STOP_FLAG),
-    .cnt2_is16_flag (cnt2_is16_flag)
+    .STOP_FLAG      (STOP_FLAG)
 );
 
 AD9269 u_ad9269(

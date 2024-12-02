@@ -26,23 +26,23 @@ module fifo_rd(
     input full , //FIFO 满信号
     input almost_empty, //FIFO 将空信号
     (*mark_debug = "true"*)output reg fifo_rd_en, //FIFO 读使能
-    (*mark_debug = "true"*)input empty,
+    input empty,
     input fifo_rd_req,
     input block_flag,
     //调试用
-    (*mark_debug = "true"*)input [9:0] rd_data_count
+    input [9:0] rd_data_count
     
     );
 
 //reg define
 reg full_d0;
 reg full_d1;
-reg fifo_rd_req_d0;
+(*mark_debug = "true"*)reg fifo_rd_req_d0;
 reg fifo_rd_req_d1;
 reg fifo_rd_req_d2;
 
  reg block_flag_d0;
- reg block_flag_d1;
+ (*mark_debug = "true"*)reg block_flag_d1;
 //同步 初始化
 always @(posedge rd_clk or negedge rst_n) begin  
     if(!rst_n) begin

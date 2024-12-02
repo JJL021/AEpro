@@ -32,14 +32,13 @@ module fifo_wr(
     input full,
     input start_collect_flag,
     input empty,
-    (*mark_debug = "true"*)input [10:0] wr_data_count,
+    input [10:0] wr_data_count,
     (*mark_debug = "true"*)output reg block_flag,    //256B×Ö½ÚĞ´Íê±êÖ¾Î»£¨¿ªÊ¼·¢ËÍ±êÖ¾Î»£©
     output reg STOP_FLAG_d1,
     input fifo_rd_en,  //µ÷ÊÔÓÃ
     input valid,
-    (*mark_debug = "true"*)input [9:0] rd_data_count,
-    output delay_stop_flag,
-    output reg cnt2_is16_flag
+    input [10:0] rd_data_count,
+    output delay_stop_flag
     );
 
 //wire define
@@ -52,16 +51,16 @@ reg start_collect_flag_d0;
 reg STOP_FLAG;
 reg start_collect_flag_d1;
 reg [13:0] count_reg1;  //1024*16
-(*mark_debug = "true"*)reg [8:0] count_reg2;
-reg [9:0] rd_data_count_d1;
-reg [9:0] rd_data_count_d2;
+reg [8:0] count_reg2;
+reg [10:0] rd_data_count_d1;
+reg [10:0] rd_data_count_d2;
 //µ÷ÊÔÓÃ
 reg fifo_rd_en_d1;
-reg fifo_rd_en_d2;
+(*mark_debug = "true"*)reg fifo_rd_en_d2;
 reg valid_d1;
 reg valid_d2;
 
-reg [10:0] wr_data_count_reg_last;
+(*mark_debug = "true"*)reg [10:0] wr_data_count_reg_last;
 reg trend;    
 
 // localparam define
@@ -192,14 +191,5 @@ signal_delay u_signal_delay(        //¸ÃÄ£¿éµÄ¸´Î»ÒªÓÃSTOP_FLAGÑÓ³Ù¼¸¸öÖÜÆÚºóµÄĞ
     .in_signal       (STOP_FLAG_d1),
     .delayed_signal  (delay_stop_flag)
 );
-//²âÊÔ
-always @(posedge wr_clk or negedge rst_n) begin
-    if(!rst_n) begin
-        cnt2_is16_flag <= 1'b0;
-    end
-    else if(count_reg2==9'd25)
-        cnt2_is16_flag <= 1'b1;
-    else
-        cnt2_is16_flag <= 1'b0;
-end
+
 endmodule

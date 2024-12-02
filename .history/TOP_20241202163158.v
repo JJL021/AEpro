@@ -55,7 +55,7 @@ wire block_flag;
 wire STOP_FLAG;
 (*mark_debug = "true"*)wire STOP_FLAG_pulse_extender;
 wire delay_stop_flag;
-wire cnt2_is16_flag;
+wire cnt2_is16_flag
 assign rst_n = sys_rst_n & locked & (~STOP_FLAG_pulse_extender);  // 综合复位信号 必须是与 因为有~
 
 //例化
@@ -88,8 +88,7 @@ eth_udp_loop u_eth_udp_loop(
     .udp_tx_req     (udp_tx_req),
     // .fifo_rd_valid  (fifo_rd_valid),
     .block_flag     (block_flag),
-    .STOP_FLAG      (STOP_FLAG),
-    .cnt2_is16_flag (cnt2_is16_flag)
+    .STOP_FLAG      (STOP_FLAG)
 );
 
 AD9269 u_ad9269(

@@ -26,11 +26,11 @@ module fifo_rd(
     input full , //FIFO 满信号
     input almost_empty, //FIFO 将空信号
     (*mark_debug = "true"*)output reg fifo_rd_en, //FIFO 读使能
-    (*mark_debug = "true"*)input empty,
+    input empty,
     input fifo_rd_req,
     input block_flag,
     //调试用
-    (*mark_debug = "true"*)input [9:0] rd_data_count
+    input [9:0] rd_data_count
     
     );
 

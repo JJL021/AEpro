@@ -11,8 +11,7 @@ module async_fifo_ip(
     output          wr_ack,
     output          block_flag,
     output          delay_stop_flag,
-    output          STOP_FLAG_d1,
-    output          cnt2_is16_flag
+    output          STOP_FLAG_d1
 
 );
 
@@ -71,8 +70,7 @@ fifo_wr u_fifo_wr (
     .valid(valid),
     .fifo_rd_en(fifo_rd_en),
     .delay_stop_flag(delay_stop_flag),
-    .rd_data_count(rd_data_count),
-    .cnt2_is16_flag(cnt2_is16_flag)
+    .rd_data_count(rd_data_count)
 );
 //Àý»¯¶ÁFIFO Ä£¿é
 fifo_rd u_fifo_rd (

@@ -238,8 +238,7 @@ udp
     .sustain_flag  (sustain_flag),
     // .fifo_rd_valid (fifo_rd_valid),
     .block_flag    (block_flag   ),
-    .STOP_FLAG     (STOP_FLAG    ),
-    .cnt2_is16_flag(cnt2_is16_flag)           
+    .STOP_FLAG     (STOP_FLAG    )           
     ); 
 
 //“Ï≤ΩFIFO
