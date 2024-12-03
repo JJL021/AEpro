@@ -53,7 +53,7 @@ wire udp_tx_req;
 wire fifo_rd_valid;
 wire fifo_wc_ack;
 wire block_flag;
-(*mark_debug = "true"*)wire STOP_FLAG;
+wire STOP_FLAG;
 wire STOP_FLAG_pulse_extender;
 wire delay_stop_flag;
 wire cnt2_is16_flag;
@@ -143,8 +143,7 @@ uart_loopback u_uart_loopback(
     .uart_rxd         (uart_rxd)    ,   
     .uart_txd         (uart_txd)    ,   
     .my_uart_send     ()            ,
-    .my_uart_tx_en    (block_flag)  ,
-    .stop_flag        (STOP_FLAG)     //用于清零脉冲计数器
+    .my_uart_tx_en    (block_flag)
 
 
 );

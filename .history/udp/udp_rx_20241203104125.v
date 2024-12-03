@@ -18,7 +18,6 @@
 // Descriptions:        The original version
 //二次开发：
 //rec_byte_num由output改为内部变量
-// if(rec_data == sustain_send_cmd)中rec_data改为了gmii_rxd
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
 
@@ -28,7 +27,7 @@ module udp_rx(
     
     (*mark_debug = "true"*)input                gmii_rx_dv  ,    //GMII输入数据有效信号
     (*mark_debug = "true"*)input        [7:0]   gmii_rxd    ,    //GMII输入数据
-    (*mark_debug = "true"*)output  reg          rec_pkt_done,    //以太网单包数据接收完成信号
+    output  reg          rec_pkt_done,    //以太网单包数据接收完成信号
     (*mark_debug = "true"*)output  reg          rec_en      ,    //以太网接收的数据使能信号
 	(*mark_debug = "true"*)output  reg  [7 :0]  rec_data    ,  
     
@@ -275,11 +274,11 @@ always @(posedge clk or negedge rst_n) begin
                         skip_en <= 1'b1;                    //有效数据接收完成
                         data_cnt <= 16'd0;
                         rec_pkt_done <= 1'b1;   
-                        if(gmii_rxd == sustain_send_cmd)   //如果收到持续发送命令
+                        if(rec_data == sustain_send_cmd)   //如果收到持续发送命令
                             sustain_flag <= 1;
-                        else if(gmii_rxd == stop_send_cmd) //如果收到停止发送命令
-                            sustain_flag <= 0;
-                        else 
+                        else if(rec_data == stop_send_cmd) //如果收到停止发送命令
+                            // sustain_flag <= 0;
+                        // else 
                             sustain_flag <= sustain_flag;            
                         rec_byte_num <= data_byte_num;
                     end     

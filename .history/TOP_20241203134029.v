@@ -143,8 +143,8 @@ uart_loopback u_uart_loopback(
     .uart_rxd         (uart_rxd)    ,   
     .uart_txd         (uart_txd)    ,   
     .my_uart_send     ()            ,
-    .my_uart_tx_en    (block_flag)  ,
-    .stop_flag        (STOP_FLAG)     //用于清零脉冲计数器
+    .my_uart_tx_en    (block_flag),
+    .stop_flag        (stop_flag)
 
 
 );

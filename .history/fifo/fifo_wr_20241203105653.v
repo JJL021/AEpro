@@ -52,7 +52,7 @@ reg start_collect_flag_d0;
 reg STOP_FLAG;
 reg start_collect_flag_d1;
 reg [13:0] count_reg1;  //1024*16
-reg [8:0] count_reg2;
+(*mark_debug = "true"*)reg [8:0] count_reg2;
 reg [9:0] rd_data_count_d1;
 reg [9:0] rd_data_count_d2;
 //µ÷ÊÔÓÃ

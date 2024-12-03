@@ -278,8 +278,8 @@ always @(posedge clk or negedge rst_n) begin
                         if(gmii_rxd == sustain_send_cmd)   //如果收到持续发送命令
                             sustain_flag <= 1;
                         else if(gmii_rxd == stop_send_cmd) //如果收到停止发送命令
-                            sustain_flag <= 0;
-                        else 
+                            // sustain_flag <= 0;
+                        // else 
                             sustain_flag <= sustain_flag;            
                         rec_byte_num <= data_byte_num;
                     end     

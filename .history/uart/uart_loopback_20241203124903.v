@@ -24,8 +24,7 @@ module uart_loopback(
     input            uart_rxd ,   //UART接收端口
     output           uart_txd ,    //UART发送端口
     input      [7:0] my_uart_send,
-    input            my_uart_tx_en,
-    input            stop_flag
+    input            my_uart_tx_en
     );
 
 //parameter define
@@ -64,8 +63,7 @@ uart_tx #(
     .uart_tx_en   (my_uart_tx_en),
     // .uart_tx_data (my_uart_send),
     .uart_txd     (uart_txd    ),
-    .uart_tx_busy (            ),
-    .stop_flag    (stop_flag)
+    .uart_tx_busy (            )
     );
     
 endmodule

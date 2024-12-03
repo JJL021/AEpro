@@ -18,7 +18,6 @@
 // Descriptions:        The original version
 //二次开发：
 //rec_byte_num由output改为内部变量
-// if(rec_data == sustain_send_cmd)中rec_data改为了gmii_rxd
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
 
@@ -28,9 +27,9 @@ module udp_rx(
     
     (*mark_debug = "true"*)input                gmii_rx_dv  ,    //GMII输入数据有效信号
     (*mark_debug = "true"*)input        [7:0]   gmii_rxd    ,    //GMII输入数据
-    (*mark_debug = "true"*)output  reg          rec_pkt_done,    //以太网单包数据接收完成信号
-    (*mark_debug = "true"*)output  reg          rec_en      ,    //以太网接收的数据使能信号
-	(*mark_debug = "true"*)output  reg  [7 :0]  rec_data    ,  
+    output  reg          rec_pkt_done,    //以太网单包数据接收完成信号
+    output  reg          rec_en      ,    //以太网接收的数据使能信号
+	output  reg  [7 :0]  rec_data    ,  
     
     //自定义
     output  reg          sustain_flag,    //可令FPGA持续发送多包数据
@@ -70,7 +69,7 @@ reg  [31:0]  des_ip          ; //目的IP地址
 reg  [5:0]   ip_head_byte_num; //IP首部长度
 reg  [15:0]  udp_byte_num    ; //UDP长度
 reg  [15:0]  data_byte_num   ; //数据长度
-(*mark_debug = "true"*)reg  [15:0]  data_cnt        ; //有效数据计数    
+reg  [15:0]  data_cnt        ; //有效数据计数    
 reg  [15:0]  rec_byte_num    ;//以太网接收的有效字数 单位:byte 
 reg         STOP_FLAG_d1     ;  //同步STOP_FLAG寄存器
 (*mark_debug = "true"*)reg         STOP_FLAG_d2     ;
@@ -275,11 +274,11 @@ always @(posedge clk or negedge rst_n) begin
                         skip_en <= 1'b1;                    //有效数据接收完成
                         data_cnt <= 16'd0;
                         rec_pkt_done <= 1'b1;   
-                        if(gmii_rxd == sustain_send_cmd)   //如果收到持续发送命令
+                        if(rec_data == sustain_send_cmd)   //如果收到持续发送命令
                             sustain_flag <= 1;
-                        else if(gmii_rxd == stop_send_cmd) //如果收到停止发送命令
-                            sustain_flag <= 0;
-                        else 
+                        else if(rec_data == stop_send_cmd) //如果收到停止发送命令
+                            // sustain_flag <= 0;
+                        // else 
                             sustain_flag <= sustain_flag;            
                         rec_byte_num <= data_byte_num;
                     end     

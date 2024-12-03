@@ -19,11 +19,10 @@
 module uart_tx(
     input               clk         , //系统时钟
     input               rst_n       , //系统复位，低有效
-    (*mark_debug = "true"*)input               uart_tx_en  , //UART的发送使能
+    input               uart_tx_en  , //UART的发送使能
     // input     [7:0]     uart_tx_data, //UART要发送的数据
-    (*mark_debug = "true"*)output  reg         uart_txd    , //UART发送端口
-    (*mark_debug = "true"*)output  reg         uart_tx_busy,  //发送忙状态信号
-    input               stop_flag
+    output  reg         uart_txd    , //UART发送端口
+    output  reg         uart_tx_busy  //发送忙状态信号
     );
 
 //parameter define
@@ -32,13 +31,13 @@ parameter UART_BPS = 1000000  ;               //串口波特率
 localparam BAUD_CNT_MAX = CLK_FREQ/UART_BPS; //为得到指定波特率，对系统时钟计数BPS_CNT次
 
 //reg define
-(*mark_debug = "true"*)reg  [7:0]  tx_data_t;  //发送数据寄存器
-(*mark_debug = "true"*)reg  [3:0]  tx_cnt   ;  //发送数据计数器
+reg  [7:0]  tx_data_t;  //发送数据寄存器
+reg  [3:0]  tx_cnt   ;  //发送数据计数器
 reg  [15:0] baud_cnt ;  //波特率计数器
-(*mark_debug = "true"*)reg  [7:0]  block_cnt;  //fifo_wr的block_flag的次数统计
-(*mark_debug = "true"*)reg  [7:0]  block_cnt2;  //fifo_wr的block_flag的次数统计
+reg  [7:0]  block_cnt;  //fifo_wr的block_flag的次数统计
+reg  [7:0]  block_cnt2;  //fifo_wr的block_flag的次数统计
 reg  [7:0]  block_cnt3;  //fifo_wr的block_flag的次数统计
-(*mark_debug = "true"*)reg  [7:0]  uart_tx_data;   //UART要发送的数据
+reg  [7:0]  uart_tx_data;   //UART要发送的数据
 //*****************************************************
 //**                    main code
 //*****************************************************
@@ -140,18 +139,12 @@ always @(posedge clk or negedge rst_n) begin
             end
         end
     end
-    else if(stop_flag) begin
-        block_cnt <= 8'b0;
-        block_cnt2 <= 8'b0;
-        block_cnt3 <= 8'b0;
-    end
-        
 end
 
 //设置要发送的数据
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n)  begin
-        uart_tx_data <= 8'h00;    
+        uart_tx_data <= 8'hff;    
     end
     else if(uart_tx_en) begin  //之前busy
         if(block_cnt < 9'd255)
@@ -165,11 +158,10 @@ always @(posedge clk or negedge rst_n) begin
                 uart_tx_data <= block_cnt2;
         end
         else
-            uart_tx_data <= uart_tx_data;
+            uart_tx_data <= block_cnt;
     end
     else
         uart_tx_data <= uart_tx_data;
-
     
 end
 endmodule

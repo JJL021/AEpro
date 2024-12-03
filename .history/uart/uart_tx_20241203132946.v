@@ -22,8 +22,7 @@ module uart_tx(
     (*mark_debug = "true"*)input               uart_tx_en  , //UART的发送使能
     // input     [7:0]     uart_tx_data, //UART要发送的数据
     (*mark_debug = "true"*)output  reg         uart_txd    , //UART发送端口
-    (*mark_debug = "true"*)output  reg         uart_tx_busy,  //发送忙状态信号
-    input               stop_flag
+    (*mark_debug = "true"*)output  reg         uart_tx_busy  //发送忙状态信号
     );
 
 //parameter define
@@ -140,12 +139,6 @@ always @(posedge clk or negedge rst_n) begin
             end
         end
     end
-    else if(stop_flag) begin
-        block_cnt <= 8'b0;
-        block_cnt2 <= 8'b0;
-        block_cnt3 <= 8'b0;
-    end
-        
 end
 
 //设置要发送的数据
@@ -167,9 +160,8 @@ always @(posedge clk or negedge rst_n) begin
         else
             uart_tx_data <= uart_tx_data;
     end
-    else
+    else if(uart_tx_busy)
         uart_tx_data <= uart_tx_data;
-
     
 end
 endmodule

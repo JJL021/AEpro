@@ -32,12 +32,12 @@ module fifo_wr(
     input full,
     input start_collect_flag,
     input empty,
-    input [10:0] wr_data_count,
-    output reg block_flag,    //256B字节写完标志位（开始发送标志位）
+    (*mark_debug = "true"*)input [10:0] wr_data_count,
+    (*mark_debug = "true"*)output reg block_flag,    //256B字节写完标志位（开始发送标志位）
     output reg STOP_FLAG_d1,
     input fifo_rd_en,  //调试用
     input valid,
-    input [9:0] rd_data_count,
+    (*mark_debug = "true"*)input [9:0] rd_data_count,
     output delay_stop_flag,
     output reg cnt2_is16_flag
     );
@@ -52,7 +52,7 @@ reg start_collect_flag_d0;
 reg STOP_FLAG;
 reg start_collect_flag_d1;
 reg [13:0] count_reg1;  //1024*16
-reg [8:0] count_reg2;
+(*mark_debug = "true"*)reg [8:0] count_reg2;
 reg [9:0] rd_data_count_d1;
 reg [9:0] rd_data_count_d2;
 //调试用
@@ -66,7 +66,7 @@ reg trend;
 
 // localparam define
 localparam count_reg1_max = 14'h280;
-localparam count_reg2_max = 9'd301;
+localparam count_reg2_max = 9'd51;
 
 
 //*****************************************************

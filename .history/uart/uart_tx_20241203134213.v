@@ -140,12 +140,7 @@ always @(posedge clk or negedge rst_n) begin
             end
         end
     end
-    else if(stop_flag) begin
-        block_cnt <= 8'b0;
-        block_cnt2 <= 8'b0;
-        block_cnt3 <= 8'b0;
-    end
-        
+    else if(STOP_FLAG)
 end
 
 //设置要发送的数据
