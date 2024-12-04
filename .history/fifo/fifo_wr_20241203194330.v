@@ -160,6 +160,7 @@ always @(posedge wr_clk or negedge rst_n) begin
         else begin
             block_flag <= 1'b0;
         end
+        if (wr_data_count_reg_last == 11'd128)
     end
 end
 
@@ -172,11 +173,11 @@ always @(posedge wr_clk or negedge rst_n) begin
     // 检测 count_reg1 从非最大值变为最大值的过渡
     else begin 
         count_reg2_last <= count_reg2; //更新count_reg2_last
-        if (block_flag && (count_reg1 == 8'b0)) begin
+        if (block_flag && (count_reg1 == count_reg1_max - 8'b1)) begin
             count_reg2 <= count_reg2 + 1'b1;
         end
-        else if (count_reg2 == (count_reg2_max - 8'd1) && (count_reg1 == 8'b0) && block_flag ) begin
-            count_reg2 <= 8'b0;
+        else if (count_reg2 == (count_reg2_max - 8'd1) && (count_reg1 == count_reg1_max - 8'h1) && block_flag ) begin
+            count_reg2 <= 9'b0;
         end
         else begin
             count_reg2 <= count_reg2;
@@ -189,12 +190,12 @@ always @(posedge wr_clk or negedge rst_n) begin
     if (!rst_n || delay_stop_flag) begin
         count_reg3 <= 9'b0;
     end
+    // 检测 count_reg1和 count_reg2从非最大值变为最大值的过渡
+    else if ((count_reg1 == count_reg1_max - 8'b1) && (count_reg2 == count_reg2_max - 8'b1) && block_flag) begin
+        count_reg3 <= count_reg3 + 1'b1;
+    end
     else if (count_reg3 == (count_reg3_max - 8'd1) && (count_reg2 == count_reg2_max - 8'b1) && (count_reg1 == count_reg1_max - 8'b1) && block_flag) begin
         count_reg3 <= 8'b0;
-    end
-    // 检测 count_reg1和 count_reg2从非最大值变为最大值的过渡
-    else if ((count_reg1 == 8'b0) && (count_reg2 == count_reg2_max - 8'b1) && block_flag) begin
-        count_reg3 <= count_reg3 + 1'b1;
     end
     else begin
         count_reg3 <= count_reg3;

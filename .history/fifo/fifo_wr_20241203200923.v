@@ -196,6 +196,7 @@ always @(posedge wr_clk or negedge rst_n) begin
     else if ((count_reg1 == 8'b0) && (count_reg2 == count_reg2_max - 8'b1) && block_flag) begin
         count_reg3 <= count_reg3 + 1'b1;
     end
+
     else begin
         count_reg3 <= count_reg3;
     end

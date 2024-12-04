@@ -49,7 +49,7 @@ wire locked;
 wire rst_n;
 wire gmii_rx_clk;
 (*mark_debug = "true"*)wire start_collect_flag;
-(*mark_debug = "true"*)wire udp_tx_req;
+wire udp_tx_req;
 wire fifo_rd_valid;
 wire fifo_wc_ack;
 wire block_flag;
@@ -123,8 +123,8 @@ async_fifo_ip u_async_fifo_ip(
     .valid               (fifo_rd_valid),
     .block_flag          (block_flag),
     .delay_stop_flag     (delay_stop_flag),
-    .STOP_FLAG_d1        (STOP_FLAG),
-    .cnt2_is16_flag      (cnt2_is16_flag)  //test
+    .STOP_FLAG_d1         (STOP_FLAG),
+    .cnt2_is16_flag       (cnt2_is16_flag)  //test
 
 );
 
@@ -143,7 +143,7 @@ uart_loopback u_uart_loopback(
     .uart_rxd         (uart_rxd)    ,   
     .uart_txd         (uart_txd)    ,   
     .my_uart_send     ()            ,
-    .my_uart_tx_en    (udp_tx_req)  ,
+    .my_uart_tx_en    (block_flag)  ,
     .stop_flag        (STOP_FLAG)     //用于清零脉冲计数器
 
 

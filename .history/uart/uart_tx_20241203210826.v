@@ -44,12 +44,12 @@ reg  [7:0]  block_cnt3;  //fifo_wr的block_flag的次数统计
 reg uart_tx_en_d1;
 reg uart_tx_en_d2;
 reg uart_tx_en_d3;
-wire pos;
+reg pos;
 
 //*****************************************************
 //**                    main code
 //*****************************************************
-assign uart_tx_en = pos;
+assign uart_tx_en = uart_tx_en_d3;
 
 //同步时钟域
 always @(posedge clk or negedge rst_n) begin
@@ -64,7 +64,7 @@ always @(posedge clk or negedge rst_n) begin
         uart_tx_en_d3 <= uart_tx_en_d2;
     end
 end
-assign pos = ~uart_tx_en_d3 & uart_tx_en_d2;
+assign pos = uart_tx_en_d3 & (~uart_tx_en_d2);
 
 //当uart_tx_en为高时，寄存输入的并行数据，并拉高BUSY信号
 always @(posedge clk or negedge rst_n) begin

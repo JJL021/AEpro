@@ -33,7 +33,7 @@ module fifo_wr(
     input start_collect_flag,
     input empty,
     input [10:0] wr_data_count,
-    (*mark_debug = "true"*)output reg block_flag,    //256B字节写完标志位（开始发送标志位）
+    output reg block_flag,    //256B字节写完标志位（开始发送标志位）
     output reg STOP_FLAG_d1,
     input fifo_rd_en,  //调试用
     input valid,
@@ -49,7 +49,7 @@ module fifo_wr(
 reg empty_d0;
 reg empty_d1;
 reg start_collect_flag_d0;
-(*mark_debug = "true"*)reg STOP_FLAG;
+reg STOP_FLAG;
 reg start_collect_flag_d1;
 (*mark_debug = "true"*)reg [7:0] count_reg1;  //1024*16
 (*mark_debug = "true"*)reg [7:0] count_reg2;
@@ -137,12 +137,10 @@ always @(posedge wr_clk or negedge rst_n) begin
     end
 end   
 
-reg block_flag_pre;
 //block_flag与count_reg1计数器
 always @(posedge wr_clk or negedge rst_n) begin
     if (!rst_n || delay_stop_flag) begin
         block_flag <= 1'b0;
-        block_flag_pre <= 1'b0;
         count_reg1 <= 14'b0;
         count_reg1_last <= 14'b0;  
     end
@@ -172,11 +170,11 @@ always @(posedge wr_clk or negedge rst_n) begin
     // 检测 count_reg1 从非最大值变为最大值的过渡
     else begin 
         count_reg2_last <= count_reg2; //更新count_reg2_last
-        if (block_flag && (count_reg1 == 8'b0)) begin
+        if ((count_reg1_last == count_reg1_max - 8'h1) && (count_reg1 == 8'h0)) begin
             count_reg2 <= count_reg2 + 1'b1;
         end
-        else if (count_reg2 == (count_reg2_max - 8'd1) && (count_reg1 == 8'b0) && block_flag ) begin
-            count_reg2 <= 8'b0;
+        else if (count_reg2 == (count_reg2_max - 8'd1) && (count_reg1 == 8'h0) && count_reg1_last == (count_reg1_max - 8'h1)) begin
+            count_reg2 <= 9'b0;
         end
         else begin
             count_reg2 <= count_reg2;
@@ -189,24 +187,24 @@ always @(posedge wr_clk or negedge rst_n) begin
     if (!rst_n || delay_stop_flag) begin
         count_reg3 <= 9'b0;
     end
-    else if (count_reg3 == (count_reg3_max - 8'd1) && (count_reg2 == count_reg2_max - 8'b1) && (count_reg1 == count_reg1_max - 8'b1) && block_flag) begin
-        count_reg3 <= 8'b0;
-    end
     // 检测 count_reg1和 count_reg2从非最大值变为最大值的过渡
-    else if ((count_reg1 == 8'b0) && (count_reg2 == count_reg2_max - 8'b1) && block_flag) begin
+    else if ((count_reg1 == 8'b0) && (count_reg2_last == count_reg2_max - 8'b1) && (count_reg2 == 8'b0)) begin
         count_reg3 <= count_reg3 + 1'b1;
+    end
+    else if (count_reg3 == (count_reg3_max - 8'd1) && count_reg2 == (count_reg2_max - 8'h1) && (count_reg1 == count_reg1_max - 8'b1)) begin
+        count_reg3 <= 8'b0;
     end
     else begin
         count_reg3 <= count_reg3;
     end
 end
 
-//STOP_FLAG设置
+//205：512MB  102：256MB   51:128MB
 always @(posedge wr_clk or negedge rst_n) begin
     if(!rst_n) begin
         STOP_FLAG <= 1'b0;
     end
-    else if(count_reg3 == (count_reg3_max - 8'd1) && (count_reg2 == count_reg2_max - 8'b1) && (count_reg1 == count_reg1_max - 8'b1) && block_flag) begin   
+    else if(count_reg3 == (count_reg3_max - 8'd1) && count_reg2 == (count_reg2_max - 8'h1) && (count_reg1 == count_reg1_max - 8'b1))begin   
         STOP_FLAG <= 1'b1;
     end
     else

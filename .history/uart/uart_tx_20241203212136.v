@@ -49,7 +49,7 @@ wire pos;
 //*****************************************************
 //**                    main code
 //*****************************************************
-assign uart_tx_en = pos;
+assign uart_tx_en = uart_tx_en_d3;
 
 //Õ¨≤Ω ±÷””Ú
 always @(posedge clk or negedge rst_n) begin

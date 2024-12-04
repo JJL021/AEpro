@@ -49,7 +49,7 @@ wire locked;
 wire rst_n;
 wire gmii_rx_clk;
 (*mark_debug = "true"*)wire start_collect_flag;
-(*mark_debug = "true"*)wire udp_tx_req;
+wire udp_tx_req;
 wire fifo_rd_valid;
 wire fifo_wc_ack;
 wire block_flag;
@@ -143,7 +143,7 @@ uart_loopback u_uart_loopback(
     .uart_rxd         (uart_rxd)    ,   
     .uart_txd         (uart_txd)    ,   
     .my_uart_send     ()            ,
-    .my_uart_tx_en    (udp_tx_req)  ,
+    .my_uart_tx_en    (block_flag)  ,
     .stop_flag        (STOP_FLAG)     //用于清零脉冲计数器
 
 

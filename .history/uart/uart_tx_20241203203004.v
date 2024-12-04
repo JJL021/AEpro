@@ -31,7 +31,7 @@ parameter CLK_FREQ = 5000000;               //系统时钟频率
 parameter UART_BPS = 1000000  ;               //串口波特率
 localparam BAUD_CNT_MAX = CLK_FREQ/UART_BPS; //为得到指定波特率，对系统时钟计数BPS_CNT次
 
-(*mark_debug = "true"*)wire uart_tx_en;
+wire uart_tx_en;
 
 //reg define
 (*mark_debug = "true"*)reg  [7:0]  tx_data_t;  //发送数据寄存器
@@ -44,12 +44,12 @@ reg  [7:0]  block_cnt3;  //fifo_wr的block_flag的次数统计
 reg uart_tx_en_d1;
 reg uart_tx_en_d2;
 reg uart_tx_en_d3;
-wire pos;
+
 
 //*****************************************************
 //**                    main code
 //*****************************************************
-assign uart_tx_en = pos;
+assign uart_tx_en = uart_tx_en_d3;
 
 //同步时钟域
 always @(posedge clk or negedge rst_n) begin
@@ -64,7 +64,6 @@ always @(posedge clk or negedge rst_n) begin
         uart_tx_en_d3 <= uart_tx_en_d2;
     end
 end
-assign pos = ~uart_tx_en_d3 & uart_tx_en_d2;
 
 //当uart_tx_en为高时，寄存输入的并行数据，并拉高BUSY信号
 always @(posedge clk or negedge rst_n) begin
