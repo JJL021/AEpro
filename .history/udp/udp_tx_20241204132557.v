@@ -104,7 +104,7 @@ reg          my_start_en_d1    ; //block_flag打拍寄存器
 //test
 reg         cnt2_is16_flag_d1;
 reg         cnt2_is16_flag_d2;
-reg         cnt2_is16_flag_d3;
+(*mark_debug = "true"*)reg         cnt2_is16_flag_d3;
                                     
 //wire define                       
 wire         pos_start_en    ;//开始发送数据上升沿

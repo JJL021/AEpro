@@ -44,7 +44,6 @@ reg  [7:0]  block_cnt3;  //fifo_wr的block_flag的次数统计
 reg uart_tx_en_d1;
 reg uart_tx_en_d2;
 reg uart_tx_en_d3;
-(*mark_debug = "true"*)reg flag_192000;
 wire pos;
 
 //*****************************************************
@@ -193,17 +192,6 @@ always @(posedge clk or negedge rst_n) begin
     end
     else
         uart_tx_data <= uart_tx_data;
-end
-//192000时检查发送的包是否正常
-//192000标志位
-
-always @(posedge clk or negedge rst_n) begin
-    if(!rst_n)  begin
-        flag_192000 <= 1'b0;
-    end
-    else if (block_cnt3 == 2'd3 && block_cnt2 == 8'd255 &&  block_cnt2 == 8'd255) begin
-        flag_192000 <= 1'b1;
-    end
 end
 
 endmodule

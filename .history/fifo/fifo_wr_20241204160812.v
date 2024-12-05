@@ -207,7 +207,7 @@ always @(posedge wr_clk or negedge rst_n) begin
         STOP_FLAG <= 1'b0;
     end
     else if(count_reg3 == (count_reg3_max - 8'd1) && (count_reg2 == count_reg2_max - 8'b1) && (count_reg1 == count_reg1_max - 8'b1) && block_flag) begin   
-        STOP_FLAG <= 1'b0;
+        STOP_FLAG <= 1'b1;
     end
     else
         STOP_FLAG <= 1'b0;
