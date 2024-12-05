@@ -31,16 +31,16 @@ parameter CLK_FREQ = 5000000;               //系统时钟频率
 parameter UART_BPS = 1000000  ;               //串口波特率
 localparam BAUD_CNT_MAX = CLK_FREQ/UART_BPS; //为得到指定波特率，对系统时钟计数BPS_CNT次
 
-wire uart_tx_en;
+(*mark_debug = "true"*)wire uart_tx_en;
 
 //reg define
-reg  [7:0]  tx_data_t;  //发送数据寄存器
-reg  [3:0]  tx_cnt   ;  //发送数据计数器
+(*mark_debug = "true"*)reg  [7:0]  tx_data_t;  //发送数据寄存器
+(*mark_debug = "true"*)reg  [3:0]  tx_cnt   ;  //发送数据计数器
 reg  [15:0] baud_cnt ;  //波特率计数器
 reg  [7:0]  block_cnt;  //fifo_wr的block_flag的次数统计
 reg  [7:0]  block_cnt2;  //fifo_wr的block_flag的次数统计
 reg  [7:0]  block_cnt3;  //fifo_wr的block_flag的次数统计
-reg  [7:0]  uart_tx_data;   //UART要发送的数据
+(*mark_debug = "true"*)reg  [7:0]  uart_tx_data;   //UART要发送的数据
 reg uart_tx_en_d1;
 reg uart_tx_en_d2;
 reg uart_tx_en_d3;

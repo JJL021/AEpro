@@ -29,8 +29,8 @@ module eth_ctrl(
     output  reg        arp_tx_en	 	,    //ARP发送使能信号
     output             arp_tx_type   	,    //ARP发送类型 0:请求  1:应答
     input              arp_tx_done   	,    //ARP发送完成信号
-    input              arp_gmii_tx_en	,    //ARP GMII输出数据有效信号 
-    input     [7:0]    arp_gmii_txd  	,    //ARP GMII输出数据
+    (*mark_debug = "true"*)input              arp_gmii_tx_en	,    //ARP GMII输出数据有效信号 
+    (*mark_debug = "true"*)input     [7:0]    arp_gmii_txd  	,    //ARP GMII输出数据
 	//ICMP相关端口信号
     input              icmp_tx_start_en , 	 //ICMP开始发送信号
     input              icmp_tx_done	    , 	 //ICMP发送完成信号
@@ -61,8 +61,7 @@ module eth_ctrl(
     output reg [7:0]   gmii_txd        	, 	 //GMII输出数据 
 	
 	//自定义
-	input 	   [7:0]	number,
-	input				sustain_flag
+	input 	   [7:0]	number
     );
 
 //reg define
@@ -187,9 +186,10 @@ always @(posedge clk or negedge rst_n) begin
         else if(icmp_tx_start_en) begin
             protocol_sw <= 2'b10;
 		end
-        else if(((arp_rx_flag && (udp_tx_busy == 1'b0)) || (arp_rx_flag && (icmp_tx_busy == 1'b0))) && sustain_flag == 1'b0) begin
+        else if((arp_rx_flag && (udp_tx_busy == 1'b0)) || (arp_rx_flag && (icmp_tx_busy == 1'b0))) begin
             protocol_sw <= 2'b0;
-            arp_tx_en <= 1'b1;
+			if(~sustain_flag)
+            	arp_tx_en <= 1'b1;
         end    
 		else ;
     end        

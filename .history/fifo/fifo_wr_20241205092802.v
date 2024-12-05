@@ -50,7 +50,7 @@ reg empty_d0;
 reg empty_d1;
 reg start_collect_flag_d0;
 (*mark_debug = "true"*)reg STOP_FLAG;
-(*mark_debug = "true"*)reg start_collect_flag_d1;
+reg start_collect_flag_d1;
 (*mark_debug = "true"*)reg [7:0] count_reg1;  //1024*16
 (*mark_debug = "true"*)reg [7:0] count_reg2;
 (*mark_debug = "true"*)reg [7:0] count_reg3;

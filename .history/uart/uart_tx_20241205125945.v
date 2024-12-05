@@ -40,7 +40,7 @@ reg  [15:0] baud_cnt ;  //波特率计数器
 reg  [7:0]  block_cnt;  //fifo_wr的block_flag的次数统计
 reg  [7:0]  block_cnt2;  //fifo_wr的block_flag的次数统计
 reg  [7:0]  block_cnt3;  //fifo_wr的block_flag的次数统计
-reg  [7:0]  uart_tx_data;   //UART要发送的数据
+(*mark_debug = "true"*)reg  [7:0]  uart_tx_data;   //UART要发送的数据
 reg uart_tx_en_d1;
 reg uart_tx_en_d2;
 reg uart_tx_en_d3;

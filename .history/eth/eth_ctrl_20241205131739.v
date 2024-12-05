@@ -26,11 +26,11 @@ module eth_ctrl(
     //ARP相关端口信号                                   
     input              arp_rx_done   	,    //ARP接收完成信号
     input              arp_rx_type   	,    //ARP接收类型 0:请求  1:应答
-    output  reg        arp_tx_en	 	,    //ARP发送使能信号
+    (*mark_debug = "true"*)output  reg        arp_tx_en	 	,    //ARP发送使能信号
     output             arp_tx_type   	,    //ARP发送类型 0:请求  1:应答
     input              arp_tx_done   	,    //ARP发送完成信号
     input              arp_gmii_tx_en	,    //ARP GMII输出数据有效信号 
-    input     [7:0]    arp_gmii_txd  	,    //ARP GMII输出数据
+    (*mark_debug = "true"*)input     [7:0]    arp_gmii_txd  	,    //ARP GMII输出数据
 	//ICMP相关端口信号
     input              icmp_tx_start_en , 	 //ICMP开始发送信号
     input              icmp_tx_done	    , 	 //ICMP发送完成信号
